@@ -56,7 +56,7 @@ class Decks extends Component {
 
 function mapStateToProps(store) {
   return ({
-    decks: convertObjectToArrayWithKey(store)
+    decks: convertObjectToArrayWithKey(store.decks)
   })
 }
 

@@ -35,7 +35,7 @@ function mapStateToProps(state, props) {
   const { title }  = props.navigation.state.params
   return ({
     title,
-    questions: state[title] ? state[title].questions : []
+    questions: state.decks[title] ? state.decks[title].questions : []
   })
 }
 

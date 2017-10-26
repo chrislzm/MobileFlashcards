@@ -77,7 +77,7 @@ function mapStateToProps(state, props) {
   const { title }  = props.navigation.state.params
   return ({
     title,
-    questions: state[title].questions
+    questions: state.decks[title].questions
   })
 }
 export default connect(mapStateToProps)(Quiz)
