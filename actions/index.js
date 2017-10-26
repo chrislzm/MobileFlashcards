@@ -4,11 +4,15 @@ import * as DecksAPI from '../utils/api'
 /* Thunk Actions */
 
 export const fetchDecks = () => dispatch => (
-    DecksAPI.getDecks().then((decks) => {
-      Objects.keys(decks).forEach(key => {
-        const { title, questions } = decks[key]
-        dispatch(addNewDeck(title,questions))
-      })
+    DecksAPI.getDecks().then((data) => {
+      if(data) {
+        const decks = JSON.parse(data)
+        console.log(decks)
+        Object.keys(decks).forEach(key => {
+          const { title, questions } = decks[key]
+          dispatch(addNewDeck(title,questions))
+        })
+      }
     })
 )
 
