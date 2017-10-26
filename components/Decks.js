@@ -2,24 +2,33 @@ import React,  { Component } from 'react'
 import { View, Text, FlatList } from 'react-native'
 import { connect } from 'react-redux'
 import { convertObjectToArrayWithKey } from '../utils/helpers'
+import { fetchDecks } from '../actions'
 
 function Deck ({ title, questions }) {
+  let numCards = 0
+  if(questions) {
+    numCards = questions.length
+  }
   return (
     <View key={title}>
       <Text>{title}</Text>
-      <Text>{questions.length} cards</Text>
+      <Text>{numCards} cards</Text>
     </View>
   )
 }
 
 class Decks extends Component {
+
+  componentDidMount() {
+    this.props.dispatch(fetchDecks())
+  }
+
   renderItem = ({ item }) => {
     return <Deck {...item}/>
   }
 
   render() {
     const { decks } = this.props
-    console.log(decks)
     return (
       <View>
         { decks.length === 0 && (
