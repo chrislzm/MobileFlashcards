@@ -62,13 +62,13 @@ const MainNavigator = StackNavigator({
   Home: {
     screen: Tabs,
     navigationOptions: {
-      headerBackTitle: 'Back to Decks'
+      headerBackTitle: 'Back to List'
     }
   },
   IndividualDeck: {
     screen: IndividualDeck,
     navigationOptions: {
-      headerBackTitle: 'Back'
+      headerBackTitle: 'Back to Deck'
     }
   },
   NewDeck: {
