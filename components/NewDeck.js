@@ -16,7 +16,6 @@ class NewDeck extends Component {
   }
 
   handlePress = () => {
-    console.log("Adding deck " + this.state.input)
     this.props.dispatch(submitNewDeckTitle(this.state.input))
   }
 
