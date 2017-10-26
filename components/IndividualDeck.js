@@ -1,8 +1,17 @@
 import React,  { Component } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
+import { Alert } from 'react-native'
 
 class IndividualDeck extends Component {
+
+  startQuiz = (numCards,navigation) => {
+    if(numCards === 0) {
+      Alert.alert('Can\'t Start Quiz','Please add cards to this deck first')
+    } else {
+      navigation.navigate('Quiz', {title})
+    }
+  }
 
   render() {
     const { title, questions, navigation } = this.props
@@ -14,7 +23,7 @@ class IndividualDeck extends Component {
         <TouchableOpacity onPress={() => navigation.navigate('NewQuestion', {title})}>
           <Text>Add Card</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Quiz', {title})}>
+        <TouchableOpacity onPress={() => this.startQuiz(numCards,navigation)}>
           <Text>Start Quiz</Text>
         </TouchableOpacity>
       </View>
