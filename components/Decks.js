@@ -1,6 +1,7 @@
 import React,  { Component } from 'react'
 import { View, Text, FlatList } from 'react-native'
-import { getDecks } from '../utils/api.js'
+import { connect } from 'react-redux'
+import { convertObjectToArrayWithKey } from '../utils/helpers'
 
 function Deck ({ title, questions }) {
   return (
@@ -11,21 +12,20 @@ function Deck ({ title, questions }) {
   )
 }
 
-export default class Decks extends Component {
+class Decks extends Component {
   renderItem = ({ item }) => {
     return <Deck {...item}/>
   }
 
   render() {
-
-    const decks = convertDecksToArrayWithKey(getDecks())
-
+    const { decks } = this.props
+    console.log(decks)
     return (
       <View>
-        { !decks && (
+        { decks.length === 0 && (
           <Text>No flashcard decks. Please add a new deck!</Text>
         )}
-        { decks && (
+        { decks.length !== 0 && (
           <FlatList
             data={decks}
             renderItem={this.renderItem}
@@ -36,10 +36,10 @@ export default class Decks extends Component {
   }
 }
 
-function convertDecksToArrayWithKey(object) {
-  return Object.keys(object).map((key) => {
-    let arrayObj = object[key]
-    arrayObj.key = key
-    return arrayObj
+function mapStateToProps(store) {
+  return ({
+    decks: convertObjectToArrayWithKey(store)
   })
 }
+
+export default connect(mapStateToProps)(Decks)
