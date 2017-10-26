@@ -3,6 +3,7 @@ import { View, Text, TextInput, KeyboardAvoidingView, TouchableOpacity } from 'r
 import { connect } from 'react-redux'
 import { submitNewQuestion } from '../actions'
 import { validateTextInput } from '../utils/helpers'
+import { Alert } from 'react-native'
 
 class NewQuestion extends Component {
   state = {
@@ -22,6 +23,8 @@ class NewQuestion extends Component {
       const { title } = this.props.navigation.state.params
       const questionObject = { question, answer }
       this.props.dispatch(submitNewQuestion(title,questionObject))
+      this.setState({ question: '', answer: ''})
+      Alert.alert('Success!','Your card has been added.')
     }
   }
 
