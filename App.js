@@ -9,6 +9,10 @@ import IndividualDeck from './components/IndividualDeck'
 import NewDeck from './components/NewDeck'
 import NewQuestion from './components/NewQuestion'
 import Quiz from './components/Quiz'
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import reducer from './reducers'
+import thunk from 'redux-thunk'
 
 function FlashcardsStatusBar ({ backgroundColor, ...props}) {
   return (
@@ -87,9 +91,12 @@ const MainNavigator = StackNavigator({
 export default class App extends React.Component {
   render() {
     return (
-      <View style={{flex: 1}}>
-        <FlashcardsStatusBar backgroundColor={purple} barStyle='light-content'/>
-        <MainNavigator />
-      </View>    )
+      <Provider store={createStore(reducer, applyMiddleware(thunk))}>
+        <View style={{flex: 1}}>
+          <FlashcardsStatusBar backgroundColor={purple} barStyle='light-content'/>
+          <MainNavigator />
+        </View>
+      </Provider>
+    )
   }
 }
