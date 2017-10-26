@@ -5,7 +5,7 @@ import { Alert } from 'react-native'
 
 class IndividualDeck extends Component {
 
-  startQuiz = (numCards,navigation) => {
+  startQuiz = (numCards,navigation,title) => {
     if(numCards === 0) {
       Alert.alert('Can\'t Start Quiz','Please add cards to this deck first')
     } else {
@@ -23,7 +23,7 @@ class IndividualDeck extends Component {
         <TouchableOpacity onPress={() => navigation.navigate('NewQuestion', {title})}>
           <Text>Add Card</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.startQuiz(numCards,navigation)}>
+        <TouchableOpacity onPress={() => this.startQuiz(numCards,navigation,title)}>
           <Text>Start Quiz</Text>
         </TouchableOpacity>
       </View>
