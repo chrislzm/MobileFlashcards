@@ -12,7 +12,7 @@ function Deck (props) {
   }
   return (
     <View key={title}>
-      <TouchableOpacity onPress={() => navigation.navigate('IndividualDeck')}>
+      <TouchableOpacity onPress={() => navigation.navigate('IndividualDeck',{ title })}>
         <Text>{title}</Text>
         <Text>{numCards} cards</Text>
       </TouchableOpacity>
