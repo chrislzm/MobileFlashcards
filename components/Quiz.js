@@ -37,7 +37,7 @@ class Quiz extends Component {
           <View>
             <Text>Quiz complete!</Text>
             <Text>Your Score:</Text>
-            <Text>{correct*100.0/numQuestions}%</Text>
+            <Text>{(correct*100.0/numQuestions).toFixed(1)}%</Text>
           </View>
         )}
         { !quizComplete && (
