@@ -63,28 +63,16 @@ const MainNavigator = StackNavigator({
     screen: Tabs
   },
   IndividualDeck: {
-    screen: IndividualDeck,
-    navigationOptions: {
-      title: 'Individual Deck'
-    }
+    screen: IndividualDeck
   },
   NewDeck: {
-    screen: NewDeck,
-    navigationOptions: {
-      title: 'New Deck'
-    }
+    screen: NewDeck
   },
   NewQuestion: {
-    screen: NewQuestion,
-    navigationOptions: {
-      title: 'New Question'
-    }
+    screen: NewQuestion
   },
   Quiz: {
-    screen: Quiz,
-    navigationOptions: {
-      title: 'Quiz'
-    }
+    screen: Quiz
   }
 })
 
