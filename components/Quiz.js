@@ -37,13 +37,7 @@ class Quiz extends Component {
           <View>
             <Text>Quiz complete!</Text>
             <Text>Your Score:</Text>
-<<<<<<< HEAD
             <Text>{Math.round(correct*100.0/numQuestions)}%</Text>
-||||||| merged common ancestors
-            <Text>{correct*100.0/numQuestions}%</Text>
-=======
-            <Text>{(correct*100.0/numQuestions).toFixed(1)}%</Text>
->>>>>>> 8c55a68faaf3aa26e462fe493f4b34e75259b841
           </View>
         )}
         { !quizComplete && (
