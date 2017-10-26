@@ -15,7 +15,7 @@ class IndividualDeck extends Component {
 
   render() {
     const { title, questions, navigation } = this.props
-    const numCards = questions ? questions.length : 0
+    const numCards = questions.length
     return (
       <View>
         <Text>{title}</Text>
@@ -35,7 +35,7 @@ function mapStateToProps(state, props) {
   const { title }  = props.navigation.state.params
   return ({
     title,
-    questions: state[title].questions
+    questions: state[title] ? state[title].questions : []
   })
 }
 
