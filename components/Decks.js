@@ -39,7 +39,7 @@ class Decks extends Component {
   render() {
     const { decks } = this.props
     return (
-      <View>
+      <View style={{flex: 1}}>
         { decks.length === 0 && (
           <Text>No flashcard decks. Please add a new deck!</Text>
         )}
