@@ -3,10 +3,11 @@ import { View, Text, TextInput, KeyboardAvoidingView, TouchableOpacity } from 'r
 import { saveDeckTitle } from '../utils/api'
 import { connect } from 'react-redux'
 import { submitNewDeckTitle } from '../actions'
+import { Alert } from 'react-native'
 
 class NewDeck extends Component {
   state = {
-    input: "New Deck"
+    input: ''
   }
 
   handleTextChange = (input) => {
@@ -17,6 +18,8 @@ class NewDeck extends Component {
 
   handlePress = () => {
     this.props.dispatch(submitNewDeckTitle(this.state.input))
+    this.setState({ input: ''})
+    Alert.alert('Success!','Your deck has been created.')
   }
 
   render() {
