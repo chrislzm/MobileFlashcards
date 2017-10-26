@@ -8,35 +8,37 @@ import { validateTextInput } from '../utils/helpers'
 
 class NewDeck extends Component {
   state = {
-    input: ''
+    title: ''
   }
 
-  handleTextChange = (input) => {
+  handleTextChange = (title) => {
     this.setState(() => ({
-      input
+      title
     }))
   }
 
-  handlePress = () => {
-    const { input } = this.state
-    if(validateTextInput(input,'New deck name')) {
-      this.props.dispatch(submitNewDeckTitle(input))
-      this.setState({ input: ''})
+  handleSubmit = (title) => {
+    const { dispatch, navigation } = this.props
+    if(validateTextInput(title,'New deck name')) {
+      dispatch(submitNewDeckTitle(title))
+      this.setState({ title: ''})
       Alert.alert('Success!','Your deck has been created.')
+      navigation.navigate('IndividualDeck',{title})
     }
   }
 
   render() {
-    const { input } = this.state
+    const { title } = this.state
+    const { navigation } = this.props
 
     return (
       <KeyboardAvoidingView behavior='padding'>
         <Text>What is the title of your new deck?</Text>
         <TextInput
-          value={input}
+          value={title}
           onChangeText={this.handleTextChange}
         />
-        <TouchableOpacity onPress={this.handlePress}>
+        <TouchableOpacity onPress={() => this.handleSubmit(title)}>
           <Text>Submit</Text>
         </TouchableOpacity>
       </KeyboardAvoidingView>
