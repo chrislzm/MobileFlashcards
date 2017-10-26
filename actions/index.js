@@ -1,4 +1,5 @@
 export const ADD_NEW_DECK = 'ADD_NEW_DECK'
+export const ADD_NEW_QUESTION = 'ADD_NEW_QUESTION'
 import * as DecksAPI from '../utils/api'
 
 /* Thunk Actions */
@@ -21,6 +22,12 @@ export const submitNewDeckTitle = (title) => dispatch => (
   })
 )
 
+export const submitNewQuestion = (title, question) => dispatch => (
+  DecksAPI.addCardToDeck(title, question).then(() => {
+    dispatch(addNewQuestion(title,question))
+  })
+)
+
 /* Redux Actions */
 
 export function addNewDeck (title, questions) {
@@ -28,5 +35,13 @@ export function addNewDeck (title, questions) {
     type: ADD_NEW_DECK,
     title,
     questions
+  }
+}
+
+export function addNewQuestion (title, question) {
+  return {
+    type: ADD_NEW_QUESTION,
+    title,
+    question
   }
 }
