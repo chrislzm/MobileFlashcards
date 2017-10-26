@@ -4,6 +4,7 @@ import { saveDeckTitle } from '../utils/api'
 import { connect } from 'react-redux'
 import { submitNewDeckTitle } from '../actions'
 import { Alert } from 'react-native'
+import { validateTextInput } from '../utils/helpers'
 
 class NewDeck extends Component {
   state = {
@@ -17,9 +18,12 @@ class NewDeck extends Component {
   }
 
   handlePress = () => {
-    this.props.dispatch(submitNewDeckTitle(this.state.input))
-    this.setState({ input: ''})
-    Alert.alert('Success!','Your deck has been created.')
+    const { input } = this.state
+    if(validateTextInput(input,'New deck name')) {
+      this.props.dispatch(submitNewDeckTitle(input))
+      this.setState({ input: ''})
+      Alert.alert('Success!','Your deck has been created.')
+    }
   }
 
   render() {
