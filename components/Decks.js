@@ -1,18 +1,21 @@
 import React,  { Component } from 'react'
-import { View, Text, FlatList } from 'react-native'
+import { View, Text, FlatList, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { convertObjectToArrayWithKey } from '../utils/helpers'
 import { fetchDecks } from '../actions'
 
-function Deck ({ title, questions }) {
+function Deck (props) {
+  const { navigation, title, questions } = props
   let numCards = 0
   if(questions) {
     numCards = questions.length
   }
   return (
     <View key={title}>
-      <Text>{title}</Text>
-      <Text>{numCards} cards</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('IndividualDeck')}>
+        <Text>{title}</Text>
+        <Text>{numCards} cards</Text>
+      </TouchableOpacity>
     </View>
   )
 }
@@ -24,7 +27,13 @@ class Decks extends Component {
   }
 
   renderItem = ({ item }) => {
-    return <Deck {...item}/>
+    const { navigation } = this.props
+    return (
+      <Deck
+        {...item}
+        navigation={navigation}
+      />
+    )
   }
 
   render() {
