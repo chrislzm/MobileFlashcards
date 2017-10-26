@@ -10,7 +10,7 @@ class NewQuestion extends Component {
     answer: ''
   }
 
-  handleTextChange = (input,field) => {
+  handleTextChange = (field,input) => {
     this.setState(() => ({
       [field]: input
     }))
@@ -34,12 +34,12 @@ class NewQuestion extends Component {
         <Text>Question:</Text>
         <TextInput
           value={question}
-          onChangeText={(input) => this.handleTextChange(input,'question')}
+          onChangeText={(input) => this.handleTextChange('question',input)}
         />
         <Text>Answer:</Text>
         <TextInput
           value={answer}
-          onChangeText={(input) => this.handleTextChange(input,'answer')}
+          onChangeText={(input) => this.handleTextChange('answer',input)}
         />
         <TouchableOpacity onPress={this.handleSubmit}>
           <Text>Submit</Text>
