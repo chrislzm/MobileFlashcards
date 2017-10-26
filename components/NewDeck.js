@@ -1,12 +1,41 @@
 import React,  { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, TextInput, KeyboardAvoidingView, TouchableOpacity } from 'react-native'
+import { saveDeckTitle } from '../utils/api'
+import { connect } from 'react-redux'
+import { submitNewDeckTitle } from '../actions'
 
-export default class NewDeck extends Component {
+class NewDeck extends Component {
+  state = {
+    input: "New Deck"
+  }
+
+  handleTextChange = (input) => {
+    this.setState(() => ({
+      input
+    }))
+  }
+
+  handlePress = () => {
+    console.log("Adding deck " + this.state.input)
+    this.props.dispatch(submitNewDeckTitle(this.state.input))
+  }
+
   render() {
+    const { input } = this.state
+
     return (
-      <View>
-        <Text>NewDeck component</Text>
-      </View>
+      <KeyboardAvoidingView behavior='padding'>
+        <Text>What is the title of your new deck?</Text>
+        <TextInput
+          value={input}
+          onChangeText={this.handleTextChange}
+        />
+        <TouchableOpacity onPress={this.handlePress}>
+          <Text>Submit</Text>
+        </TouchableOpacity>
+      </KeyboardAvoidingView>
     )
   }
 }
+
+export default connect()(NewDeck)
