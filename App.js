@@ -62,7 +62,7 @@ const MainNavigator = StackNavigator({
   Home: {
     screen: Tabs,
     navigationOptions: {
-      headerBackTitle: 'Back to List'
+      headerBackTitle: 'Back'
     }
   },
   IndividualDeck: {
@@ -70,9 +70,6 @@ const MainNavigator = StackNavigator({
     navigationOptions: {
       headerBackTitle: 'Back to Deck'
     }
-  },
-  NewDeck: {
-    screen: NewDeck
   },
   NewQuestion: {
     screen: NewQuestion
