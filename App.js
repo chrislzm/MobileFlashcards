@@ -60,10 +60,16 @@ const Tabs = TabNavigator({
 
 const MainNavigator = StackNavigator({
   Home: {
-    screen: Tabs
+    screen: Tabs,
+    navigationOptions: {
+      headerBackTitle: 'Back to Decks'
+    }
   },
   IndividualDeck: {
-    screen: IndividualDeck
+    screen: IndividualDeck,
+    navigationOptions: {
+      headerBackTitle: 'Back'
+    }
   },
   NewDeck: {
     screen: NewDeck
