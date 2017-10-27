@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Platform } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation'
-import { Foundation, Entypo } from '@expo/vector-icons'
+import { Foundation, Entypo, MaterialIcons } from '@expo/vector-icons'
 import { purple, white } from './utils/colors'
 import Decks from './components/Decks'
 import FlashcardsStatusBar from './components/FlashcardsStatusBar'
@@ -9,6 +9,7 @@ import IndividualDeck from './components/IndividualDeck'
 import NewDeck from './components/NewDeck'
 import NewQuestion from './components/NewQuestion'
 import Quiz from './components/Quiz'
+import RemoveDecks from './components/RemoveDecks'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
@@ -28,6 +29,13 @@ const Tabs = TabNavigator({
     navigationOptions: {
       tabBarLabel: 'Add New Deck',
       tabBarIcon: ({ tintColor }) => <Entypo name='add-to-list' size={30} color={tintColor} />
+    }
+  },
+  RemoveDecks: {
+    screen: RemoveDecks,
+    navigationOptions: {
+      tabBarLabel: 'Remove Decks',
+      tabBarIcon: ({ tintColor }) => <MaterialIcons name='delete-sweep' size={30} color={tintColor} />
     }
   }
 }, {
