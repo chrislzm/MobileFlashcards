@@ -13,6 +13,7 @@ import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
 import thunk from 'redux-thunk'
+import { setLocalNotification } from './utils/helpers'
 
 function FlashcardsStatusBar ({ backgroundColor, ...props}) {
   return (
@@ -80,6 +81,10 @@ const MainNavigator = StackNavigator({
 })
 
 export default class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification()
+  }
+  
   render() {
     return (
       <Provider store={createStore(reducer, applyMiddleware(thunk))}>

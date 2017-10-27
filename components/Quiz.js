@@ -1,7 +1,7 @@
 import React,  { Component } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
-
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
 class Quiz extends Component {
   state = {
     index: 0,
@@ -13,12 +13,13 @@ class Quiz extends Component {
     this.setState((prevState) => ({ showAnswer: !prevState.showAnswer }))
   }
 
-  submitCorrect = () => {
-    this.setState((prevState) => ({ index: prevState.index+1, correct: prevState.correct+1 }))
-  }
-
-  submitIncorrect = () => {
-    this.setState((prevState) => ({ index: prevState.index+1 }))
+  submitAnswer = (correct,index,numQuestions) => {
+    let delta = correct ? 1 : 0
+    this.setState((prevState) => ({ index: prevState.index+1, correct: prevState.correct+delta }))
+    if(index+1 === numQuestions) {
+      clearLocalNotification()
+      .then(setLocalNotification)
+    }
   }
 
   render() {
@@ -60,10 +61,10 @@ class Quiz extends Component {
                   </TouchableOpacity>
                 </View>
               )}
-              <TouchableOpacity onPress={this.submitCorrect}>
+              <TouchableOpacity onPress={() => this.submitAnswer(true,index,numQuestions)}>
                 <Text>Correct</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={this.submitIncorrect}>
+              <TouchableOpacity onPress={() => this.submitAnswer(false,index,numQuestions)}>
                 <Text>Incorrect</Text>
               </TouchableOpacity>
           </View>
