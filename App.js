@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, Platform, StatusBar } from 'react-native';
+import { StyleSheet, Text, View, Platform } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import { Foundation, Entypo } from '@expo/vector-icons'
 import { purple, white } from './utils/colors'
-import { Constants } from 'expo'
 import Decks from './components/Decks'
+import FlashcardsStatusBar from './components/FlashcardsStatusBar'
 import IndividualDeck from './components/IndividualDeck'
 import NewDeck from './components/NewDeck'
 import NewQuestion from './components/NewQuestion'
@@ -14,14 +14,6 @@ import { Provider } from 'react-redux'
 import reducer from './reducers'
 import thunk from 'redux-thunk'
 import { setLocalNotification } from './utils/helpers'
-
-function FlashcardsStatusBar ({ backgroundColor, ...props}) {
-  return (
-    <View style={{backgroundColor, height: Constants.statusBarHeight}}>
-      <StatusBar translucent backgroundColor={backgroundColor} {...props} />
-    </View>
-  )
-}
 
 const Tabs = TabNavigator({
   Decks: {
@@ -84,7 +76,7 @@ export default class App extends React.Component {
   componentDidMount() {
     setLocalNotification()
   }
-  
+
   render() {
     return (
       <Provider store={createStore(reducer, applyMiddleware(thunk))}>
