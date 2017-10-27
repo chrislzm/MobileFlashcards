@@ -2,15 +2,13 @@ import React,  { Component } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
+import QuizComplete from './QuizComplete'
+import QuizQuestion from './QuizQuestion'
+
 class Quiz extends Component {
   state = {
     index: 0,
-    correct: 0,
-    showAnswer: false
-  }
-
-  toggleShowAnswer = () => {
-    this.setState((prevState) => ({ showAnswer: !prevState.showAnswer }))
+    correct: 0
   }
 
   submitAnswer = (correct,index,numQuestions) => {
@@ -22,8 +20,15 @@ class Quiz extends Component {
     }
   }
 
+  restartQuiz = () => {
+    this.setState({
+      index: 0,
+      correct: 0
+    })
+  }
+
   render() {
-    const { title, questions } = this.props
+    const { title, questions, navigation } = this.props
     const { index, correct, showAnswer } = this.state
     const numQuestions = questions.length
     const quizComplete = index === numQuestions
@@ -35,39 +40,23 @@ class Quiz extends Component {
     return (
       <View>
         { quizComplete && (
-          <View>
-            <Text>Quiz complete!</Text>
-            <Text>Your Score:</Text>
-            <Text>{Math.round(correct*100.0/numQuestions)}%</Text>
-          </View>
+          <QuizComplete
+            numCorrect={ correct }
+            numQuestions={ numQuestions }
+            restartQuiz={ this.restartQuiz }
+            navigation={ navigation }
+          />
         )}
         { !quizComplete && (
-          <View>
-            <Text>{title}, Question {index+1}/{numQuestions}</Text>
-            {
-              !showAnswer && (
-                <View>
-                  <Text>{question}</Text>
-                  <TouchableOpacity onPress={this.toggleShowAnswer}>
-                    <Text>Answer</Text>
-                  </TouchableOpacity>
-                </View>
-              )}
-              {  showAnswer && (
-                <View>
-                  <Text>{answer}</Text>
-                  <TouchableOpacity onPress={this.toggleShowAnswer}>
-                    <Text>Question</Text>
-                  </TouchableOpacity>
-                </View>
-              )}
-              <TouchableOpacity onPress={() => this.submitAnswer(true,index,numQuestions)}>
-                <Text>Correct</Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => this.submitAnswer(false,index,numQuestions)}>
-                <Text>Incorrect</Text>
-              </TouchableOpacity>
-          </View>
+          <QuizQuestion
+             title={title}
+             question={question}
+             answer={answer}
+             questionNum={index+1}
+             numQuestions={numQuestions}
+             handleCorrect={() => this.submitAnswer(true,index,numQuestions)}
+             handleIncorrect={() => this.submitAnswer(false,index,numQuestions)}
+          />
         )}
       </View>
     )
