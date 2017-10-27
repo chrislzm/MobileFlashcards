@@ -13,7 +13,10 @@ class Quiz extends Component {
 
   submitAnswer = (correct,index,numQuestions) => {
     let delta = correct ? 1 : 0
-    this.setState((prevState) => ({ index: prevState.index+1, correct: prevState.correct+delta }))
+    this.setState((prevState) => ({
+      index: prevState.index+1,
+      correct: prevState.correct+delta
+    }))
     if(index+1 === numQuestions) {
       clearLocalNotification()
       .then(setLocalNotification)
@@ -31,12 +34,15 @@ class Quiz extends Component {
     const { title, questions, navigation } = this.props
     const { index, correct, showAnswer } = this.state
     const numQuestions = questions.length
+
     const quizComplete = index === numQuestions
+
     let question, answer
     if(!quizComplete) {
       question = questions[index].question
       answer = questions[index].answer
     }
+
     return (
       <View>
         { quizComplete && (
