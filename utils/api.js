@@ -16,6 +16,10 @@ export const addCardToDeck = (title,question) => (
   })
 )
 
+export const clearData = () => (
+  AsyncStorage.removeItem(DECKS_STORAGE_KEY)
+)
+
 export const getDecks = () => (
   AsyncStorage.getItem(DECKS_STORAGE_KEY)
 )
