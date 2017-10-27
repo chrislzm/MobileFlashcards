@@ -1,6 +1,8 @@
+import * as DecksAPI from '../utils/api'
+
 export const ADD_NEW_DECK = 'ADD_NEW_DECK'
 export const ADD_NEW_QUESTION = 'ADD_NEW_QUESTION'
-import * as DecksAPI from '../utils/api'
+export const RESET_DECK_STORE = 'RESET_DECK_STORE'
 
 /* Thunk Actions */
 
@@ -14,6 +16,12 @@ export const fetchDecks = () => dispatch => (
         })
       }
     })
+)
+
+export const removeAllDecks = () => dispatch => (
+  DecksAPI.clearData().then(() => {
+    dispatch(resetDeckStore())
+  })
 )
 
 export const submitNewDeckTitle = (title) => dispatch => (
@@ -43,5 +51,11 @@ export function addNewQuestion (title, question) {
     type: ADD_NEW_QUESTION,
     title,
     question
+  }
+}
+
+export function resetDeckStore () {
+  return {
+    type: RESET_DECK_STORE
   }
 }
