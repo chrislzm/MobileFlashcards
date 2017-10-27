@@ -13,9 +13,11 @@ class Decks extends Component {
 
   renderItem = ({ item }) => {
     const { navigation } = this.props
+    const { title, questions } = item
     return (
       <Deck
-        {...item}
+        title={title}
+        numCards={questions.length}
         navigation={navigation}
       />
     )
@@ -23,12 +25,13 @@ class Decks extends Component {
 
   render() {
     const { decks } = this.props
+    const haveFlashcards = decks.length !== 0
     return (
       <View style={{flex: 1}}>
-        { decks.length === 0 && (
+        { !haveFlashcards && (
           <Text>No flashcard decks. Please add a new deck!</Text>
         )}
-        { decks.length !== 0 && (
+        { haveFlashcards && (
           <FlatList
             data={decks}
             renderItem={this.renderItem}

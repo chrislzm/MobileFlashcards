@@ -2,11 +2,7 @@ import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 
 export default function Deck (props) {
-  const { navigation, title, questions } = props
-  let numCards = 0
-  if(questions) {
-    numCards = questions.length
-  }
+  const { navigation, title, numCards } = props
   return (
     <View key={title}>
       <TouchableOpacity onPress={() => navigation.navigate('IndividualDeck',{ title })}>
