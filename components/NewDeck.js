@@ -1,10 +1,11 @@
 import React,  { Component } from 'react'
-import { View, Text, TextInput, KeyboardAvoidingView, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, KeyboardAvoidingView, TouchableOpacity, StyleSheet } from 'react-native'
 import { saveDeckTitle } from '../utils/api'
 import { connect } from 'react-redux'
 import { submitNewDeckTitle } from '../actions'
 import { Alert } from 'react-native'
 import { validateTextInput } from '../utils/helpers'
+import { white, purple } from '../utils/colors'
 
 class NewDeck extends Component {
   state = {
@@ -32,18 +33,51 @@ class NewDeck extends Component {
     const { navigation } = this.props
 
     return (
-      <KeyboardAvoidingView behavior='padding'>
-        <Text>What is the title of your new deck?</Text>
+      <KeyboardAvoidingView style={styles.container} behavior='padding'>
+        <Text style={styles.statusMessage}>What is the title of your new deck?</Text>
         <TextInput
+          style={styles.textInput}
           value={title}
           onChangeText={this.handleTextChange}
         />
-        <TouchableOpacity onPress={() => this.handleSubmit(title)}>
-          <Text>Submit</Text>
+        <TouchableOpacity style={styles.submitBtn} onPress={() => this.handleSubmit(title)}>
+          <Text style={styles.submitBtnText}>Submit</Text>
         </TouchableOpacity>
       </KeyboardAvoidingView>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding:20,
+    justifyContent: 'center',
+    backgroundColor: white
+  },
+  statusMessage: {
+    fontSize: 40,
+    textAlign: 'center'
+  },
+  submitBtn: {
+    backgroundColor: purple,
+    padding: 10,
+    borderRadius: 7,
+    height: 45
+  },
+  submitBtnText: {
+    color: white,
+    fontSize: 22,
+    textAlign: 'center'
+  },
+  textInput: {
+    borderWidth:1,
+    borderRadius: 7,
+    fontSize:20,
+    padding:10,
+    marginTop:40,
+    marginBottom:40
+  }
+})
 
 export default connect()(NewDeck)

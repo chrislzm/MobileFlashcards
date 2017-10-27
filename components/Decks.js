@@ -1,9 +1,10 @@
 import React,  { Component } from 'react'
-import { View, Text, FlatList, TouchableOpacity } from 'react-native'
+import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { convertObjectToArrayWithKey } from '../utils/helpers'
 import { fetchDecks } from '../actions'
 import Deck from './Deck'
+import { white } from '../utils/colors'
 
 class Decks extends Component {
 
@@ -25,22 +26,36 @@ class Decks extends Component {
 
   render() {
     const { decks } = this.props
-    const haveFlashcards = decks.length !== 0
+    // If we have flashcard deck(s)
+    if(decks.length !== 0) {
+      return (
+        <FlatList
+          style={{flex: 1, backgroundColor: white}}
+          data={decks}
+          renderItem={this.renderItem}
+        />
+      )
+    }
     return (
-      <View style={{flex: 1}}>
-        { !haveFlashcards && (
-          <Text>No flashcard decks. Please add a new deck!</Text>
-        )}
-        { haveFlashcards && (
-          <FlatList
-            data={decks}
-            renderItem={this.renderItem}
-          />
-        )}
+      <View style={styles.container}>
+        <Text style={styles.statusMessage}>No flashcards yet. Please add a new deck!</Text>
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    padding:20,
+    backgroundColor:white
+  },
+  statusMessage: {
+    fontSize: 30,
+    textAlign: 'center'
+  }
+})
 
 function mapStateToProps(store) {
   return ({
