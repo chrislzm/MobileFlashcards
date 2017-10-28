@@ -3,7 +3,7 @@ import { Text, TextInput, KeyboardAvoidingView, StyleSheet } from 'react-native'
 import { saveDeckTitle } from '../utils/api'
 import { connect } from 'react-redux'
 import { submitNewDeckTitle } from '../actions'
-import { validateTextInput } from '../utils/helpers'
+import { validateTextInput, validateIsUnique } from '../utils/helpers'
 import { white, purple } from '../utils/colors'
 import FlashcardsButton from './FlashcardsButton'
 import { CONTAINER, LARGE_FONT, TEXT_INPUT } from '../utils/styles'
@@ -13,7 +13,8 @@ class NewDeck extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    navigation: PropTypes.object.isRequired
+    navigation: PropTypes.object.isRequired,
+    decks: PropTypes.object.isRequired
   }
 
   state = {
@@ -28,8 +29,8 @@ class NewDeck extends Component {
 
   handleSubmit = () => {
     const { title } = this.state
-    const { navigation, dispatch } = this.props
-    if(validateTextInput(title,'New deck name')) {
+    const { navigation, dispatch, decks } = this.props
+    if(validateTextInput(title,'New deck name') && validateIsUnique(title,decks)) {
       dispatch(submitNewDeckTitle(title))
       this.setState({ title: ''})
       navigation.navigate('IndividualDeck',{title})
@@ -62,4 +63,8 @@ const styles = StyleSheet.create({
   textInput: TEXT_INPUT
 })
 
-export default connect()(NewDeck)
+const mapStateToProps = (store) => ({
+  decks: store.decks
+})
+
+export default connect(mapStateToProps)(NewDeck)
