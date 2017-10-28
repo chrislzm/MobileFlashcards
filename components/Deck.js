@@ -15,7 +15,6 @@ export default function Deck (props) {
 const styles = StyleSheet.create({
   deck: {
     flex:1,
-    justifyContent: 'space-between',
     alignItems: 'center',
     borderWidth:1,
     borderRadius:10,
@@ -25,13 +24,11 @@ const styles = StyleSheet.create({
     padding:20
   },
   title: {
-    flex:1,
     fontSize:20,
     fontWeight:'bold',
     paddingBottom:10
   },
   cards: {
-    flex:1,
     fontSize:15,
     color: gray,
     fontWeight:'bold'
