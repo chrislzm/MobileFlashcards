@@ -9,11 +9,25 @@ export const CONTAINER = {
 
 export const MEDIUM_FONT = {
   fontSize: 30,
-  textAlign: 'center'
+  textAlign: 'center',
+  marginBottom:40
 }
 
 export const LARGE_FONT = {
   fontSize: 40,
+  textAlign: 'center',
+  marginBottom:40
+}
+
+export const SUBMIT_BUTTON = {
+  padding: 10,
+  borderRadius: 7,
+  height: 45,
+  marginBottom: 40
+}
+
+export const SUBMIT_BUTTON_TEXT = {
+  fontSize: 22,
   textAlign: 'center'
 }
 
@@ -22,6 +36,5 @@ export const TEXT_INPUT = {
   borderRadius: 7,
   fontSize:20,
   padding:10,
-  marginTop:40,
   marginBottom:40
 }
