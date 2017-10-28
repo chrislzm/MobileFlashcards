@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Alert } from 'react-native'
 import { white, purple, gray } from '../utils/colors'
 import { CONTAINER, MEDIUM_FONT, LARGE_FONT } from '../utils/styles'
-import Button from './Button'
+import FlashcardsButton from './FlashcardsButton'
 
 class IndividualDeck extends Component {
 
@@ -23,14 +23,14 @@ class IndividualDeck extends Component {
       <View style={styles.container}>
         <Text style={styles.largeFont}>{title}</Text>
         <Text style={styles.mediumFont}>{numCards} Cards</Text>
-        <Button
+        <FlashcardsButton
           onPress={() => navigation.navigate('NewQuestion', {title})}>
           Add Card
-        </Button>
-        <Button
+        </FlashcardsButton>
+        <FlashcardsButton
           onPress={() => this.startQuiz(numCards,navigation,title)}>
           Start Quiz
-        </Button>
+        </FlashcardsButton>
       </View>
     )
   }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet} from 'react-native'
-import Button from './Button'
+import FlashcardsButton from './FlashcardsButton'
 import { CONTAINER, MEDIUM_FONT, LARGE_FONT } from '../utils/styles'
 
 export default function QuizComplete (props) {
@@ -10,14 +10,14 @@ export default function QuizComplete (props) {
       <Text style={styles.largeFont}>Quiz complete!</Text>
       <Text style={styles.mediumFont}>Your Score:</Text>
       <Text style={styles.largeFont}>{Math.round(numCorrect*100.0/numQuestions)}%</Text>
-      <Button
+      <FlashcardsButton
         onPress={restartQuiz}>
         Restart Quiz
-      </Button>
-      <Button
+      </FlashcardsButton>
+      <FlashcardsButton
         onPress={() => navigation.goBack()}>
         Back to Deck
-      </Button>
+      </FlashcardsButton>
     </View>
   )
 }

@@ -3,7 +3,7 @@ import { Text, TouchableOpacity, StyleSheet } from 'react-native'
 import { DEFAULT_BUTTON_COLOR } from '../utils/styles'
 import { white } from '../utils/colors'
 
-export default function Button (props) {
+export default function FlashcardsButton (props) {
   const { onPress, children } = props
 
   // Update button color if one was passed into props
@@ -14,7 +14,7 @@ export default function Button (props) {
 
   return (
     <TouchableOpacity style={[styles.submitButtton,{backgroundColor}]} onPress={onPress}>
-      <Text style={styles.submitButtonText}>{children}</Text>
+      <Text style={styles.submitFlashcardsButtonText}>{children}</Text>
     </TouchableOpacity>
   )
 }
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     height: 45,
     marginBottom: 40
   },
-  submitButtonText: {
+  submitFlashcardsButtonText: {
     fontSize: 22,
     textAlign: 'center',
     color: white

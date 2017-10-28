@@ -6,7 +6,7 @@ import { removeAllDecks } from '../actions'
 import { Alert } from 'react-native'
 import { white, purple } from '../utils/colors'
 import { CONTAINER, MEDIUM_FONT } from '../utils/styles'
-import Button from './Button'
+import FlashcardsButton from './FlashcardsButton'
 
 class RemoveDecks extends Component {
   handleSubmit = () => {
@@ -18,10 +18,10 @@ class RemoveDecks extends Component {
     return (
       <View style={styles.container} behavior='padding'>
         <Text style={styles.mediumFont}>Delete all flashcards and decks? This cannot be undone.</Text>
-        <Button
+        <FlashcardsButton
           onPress={this.handleSubmit}>
           Delete All Data
-        </Button>
+        </FlashcardsButton>
       </View>
     )
   }

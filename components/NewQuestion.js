@@ -5,7 +5,7 @@ import { submitNewQuestion } from '../actions'
 import { validateTextInput } from '../utils/helpers'
 import { CONTAINER, LARGE_FONT, MEDIUM_FONT, TEXT_INPUT } from '../utils/styles'
 import { white, purple, gray } from '../utils/colors'
-import Button from './Button'
+import FlashcardsButton from './FlashcardsButton'
 
 class NewQuestion extends Component {
   state = {
@@ -48,10 +48,10 @@ class NewQuestion extends Component {
           value={answer}
           onChangeText={(input) => this.handleTextChange('answer',input)}
         />
-        <Button
+        <FlashcardsButton
           onPress={this.handleSubmit}>
           Submit
-        </Button>
+        </FlashcardsButton>
       </KeyboardAvoidingView>
     )
   }

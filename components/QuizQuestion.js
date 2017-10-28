@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import Button from './Button'
+import FlashcardsButton from './FlashcardsButton'
 import { CONTAINER, MEDIUM_FONT, SMALL_FONT } from '../utils/styles'
 import { red, green, gray } from '../utils/colors'
 
@@ -23,14 +23,14 @@ export default class QuizQuestion extends Component {
     const { title, question, answer, questionNum, numQuestions, handleCorrect, handleIncorrect } = this.props
     const { showAnswer } = this.state
 
-    let questionText, toggleButtonText
+    let questionText, toggleFlashcardsButtonText
 
     if(showAnswer) {
       questionText = answer
-      toggleButtonText = 'Show Question'
+      toggleFlashcardsButtonText = 'Show Question'
     } else {
       questionText = question
-      toggleButtonText = 'Show Answer'
+      toggleFlashcardsButtonText = 'Show Answer'
     }
 
     return (
@@ -38,21 +38,21 @@ export default class QuizQuestion extends Component {
         <View>
           <Text style={[styles.mediumFont,{color: gray}]}>{questionNum}/{numQuestions}</Text>
           <Text style={styles.mediumFont}>{questionText}</Text>
-          <Button
+          <FlashcardsButton
             onPress={this.toggleShowAnswer}>
-            {toggleButtonText}
-          </Button>
+            {toggleFlashcardsButtonText}
+          </FlashcardsButton>
         </View>
-        <Button
+        <FlashcardsButton
           backgroundColor={green}
           onPress={() => this.submitAnswer(handleCorrect)}>
           Correct
-        </Button>
-        <Button
+        </FlashcardsButton>
+        <FlashcardsButton
           backgroundColor={red}
           onPress={() => this.submitAnswer(handleIncorrect)}>
           Incorrect
-        </Button>
+        </FlashcardsButton>
         <Text style={styles.smallFont}>Currently studying "{title}"</Text>
       </View>
     )

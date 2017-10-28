@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { submitNewDeckTitle } from '../actions'
 import { validateTextInput } from '../utils/helpers'
 import { white, purple } from '../utils/colors'
-import Button from './Button'
+import FlashcardsButton from './FlashcardsButton'
 import { CONTAINER, LARGE_FONT, TEXT_INPUT } from '../utils/styles'
 
 class NewDeck extends Component {
@@ -40,10 +40,10 @@ class NewDeck extends Component {
           value={title}
           onChangeText={this.handleTextChange}
         />
-        <Button
+        <FlashcardsButton
           onPress={() => this.handleSubmit(title)}>
           Submit
-        </Button>
+        </FlashcardsButton>
       </KeyboardAvoidingView>
     )
   }
