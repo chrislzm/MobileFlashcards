@@ -6,6 +6,7 @@ import { submitNewDeckTitle } from '../actions'
 import { Alert } from 'react-native'
 import { validateTextInput } from '../utils/helpers'
 import { white, purple } from '../utils/colors'
+import Button from './Button'
 
 class NewDeck extends Component {
   state = {
@@ -40,9 +41,12 @@ class NewDeck extends Component {
           value={title}
           onChangeText={this.handleTextChange}
         />
-        <TouchableOpacity style={styles.submitBtn} onPress={() => this.handleSubmit(title)}>
-          <Text style={styles.submitBtnText}>Submit</Text>
-        </TouchableOpacity>
+        <Button
+          color={white}
+          backgroundColor={purple}
+          onPress={() => this.handleSubmit(title)}>
+          Submit
+        </Button>
       </KeyboardAvoidingView>
     )
   }
