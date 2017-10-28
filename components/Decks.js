@@ -1,12 +1,26 @@
+/*
+  Flashcards: components/Decks.js
+  By Chris Leung
+
+  Description:
+
+  React component that displays a list of decks.
+
+  Props:
+    navigation: <Object> Required. React Navigation screen navigation prop.
+    decks: <Array> Required. An array of deck objects. Refer to README.md for
+      the structure of these objects.
+*/
+
 import React,  { Component } from 'react'
 import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import { convertObjectToArrayWithKey } from '../utils/helpers'
 import { fetchDecks } from '../actions'
 import Deck from './Deck'
 import { white } from '../utils/colors'
 import { CONTAINER, MEDIUM_FONT } from '../utils/styles'
-import PropTypes from 'prop-types'
 
 class Decks extends Component {
 
@@ -19,21 +33,20 @@ class Decks extends Component {
     this.props.dispatch(fetchDecks())
   }
 
+  // Callback for FlatList component
   renderItem = ({ item }) => {
-    const { navigation } = this.props
-    const { title, questions } = item
     return (
       <Deck
-        title={title}
-        numCards={questions.length}
-        navigation={navigation}
+        title={item.title}
+        numCards={item.questions.length}
+        navigation={this.props.navigation}
       />
     )
   }
 
   render() {
     const { decks } = this.props
-    // If we have flashcard deck(s)
+    // If we have flashcard deck(s), dispay them
     if(decks.length !== 0) {
       return (
         <FlatList
@@ -56,10 +69,8 @@ const styles = StyleSheet.create({
   mediumFont: MEDIUM_FONT
 })
 
-function mapStateToProps(store) {
-  return ({
-    decks: convertObjectToArrayWithKey(store.decks)
-  })
-}
+const mapStateToProps = (store) => ({
+  decks: convertObjectToArrayWithKey(store.decks)
+})
 
 export default connect(mapStateToProps)(Decks)
