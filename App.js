@@ -15,6 +15,7 @@ import { Provider } from 'react-redux'
 import reducer from './reducers'
 import thunk from 'redux-thunk'
 import { setLocalNotification } from './utils/helpers'
+import { IOS_HEADER_BACK } from './utils/styles'
 
 const Tabs = TabNavigator({
   Decks: {
@@ -40,8 +41,11 @@ const Tabs = TabNavigator({
   }
 }, {
     navigationOptions: {
-      header: null,
-      headerMode: 'none'
+      title: 'Flashcards',
+      headerTitleStyle: { color: white },
+      headerStyle: {
+          backgroundColor: blue
+      }
     },
     tabBarOptions: {
       activeTintColor: Platform.OS === 'ios' ?  blue : white,
@@ -70,14 +74,21 @@ const MainNavigator = StackNavigator({
   IndividualDeck: {
     screen: IndividualDeck,
     navigationOptions: {
+      ...IOS_HEADER_BACK,
       headerBackTitle: 'Back to Deck'
     }
   },
   NewQuestion: {
-    screen: NewQuestion
+    screen: NewQuestion,
+    navigationOptions: {
+      ...IOS_HEADER_BACK
+    }
   },
   Quiz: {
-    screen: Quiz
+    screen: Quiz,
+    navigationOptions: {
+      ...IOS_HEADER_BACK
+    }
   }
 })
 
