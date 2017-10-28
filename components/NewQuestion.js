@@ -1,13 +1,18 @@
 import React,  { Component } from 'react'
-import { Text, TextInput, KeyboardAvoidingView, Alert, StyleSheet } from 'react-native'
+import { Text, TextInput, KeyboardAvoidingView, Alert, StyleSheet, Platform } from 'react-native'
 import { connect } from 'react-redux'
 import { submitNewQuestion } from '../actions'
-import { validateTextInput } from '../utils/helpers'
+import { validateTextInput, removeHeaderIfAndroid } from '../utils/helpers'
 import { CONTAINER, LARGE_FONT, MEDIUM_FONT, TEXT_INPUT } from '../utils/styles'
 import { white, purple, gray } from '../utils/colors'
 import FlashcardsButton from './FlashcardsButton'
 
 class NewQuestion extends Component {
+
+  static navigationOptions = ({navigation}) => (
+    removeHeaderIfAndroid()
+  )
+
   state = {
     question: '',
     answer: ''

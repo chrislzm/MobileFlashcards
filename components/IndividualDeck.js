@@ -1,12 +1,17 @@
 import React,  { Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Platform } from 'react-native'
 import { connect } from 'react-redux'
 import { Alert } from 'react-native'
 import { white, purple, gray } from '../utils/colors'
 import { CONTAINER, MEDIUM_FONT, LARGE_FONT } from '../utils/styles'
 import FlashcardsButton from './FlashcardsButton'
+import { removeHeaderIfAndroid } from '../utils/helpers'
 
 class IndividualDeck extends Component {
+
+  static navigationOptions = ({navigation}) => (
+    removeHeaderIfAndroid()
+  )
 
   startQuiz = (numCards,navigation,title) => {
     if(numCards === 0) {

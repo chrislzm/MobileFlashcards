@@ -5,8 +5,14 @@ import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
 import QuizComplete from './QuizComplete'
 import QuizQuestion from './QuizQuestion'
 import { CONTAINER } from '../utils/styles'
+import { removeHeaderIfAndroid } from '../utils/helpers'
 
 class Quiz extends Component {
+  
+  static navigationOptions = ({navigation}) => (
+    removeHeaderIfAndroid()
+  )
+
   state = {
     index: 0,
     correct: 0
