@@ -7,8 +7,15 @@ import { validateTextInput } from '../utils/helpers'
 import { white, purple } from '../utils/colors'
 import FlashcardsButton from './FlashcardsButton'
 import { CONTAINER, LARGE_FONT, TEXT_INPUT } from '../utils/styles'
+import PropTypes from 'prop-types'
 
 class NewDeck extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    navigation: PropTypes.object.isRequired
+  }
+
   state = {
     title: ''
   }
@@ -19,8 +26,9 @@ class NewDeck extends Component {
     }))
   }
 
-  handleSubmit = (title) => {
-    const { dispatch, navigation } = this.props
+  handleSubmit = () => {
+    const { title } = this.state
+    const { navigation, dispatch } = this.props
     if(validateTextInput(title,'New deck name')) {
       dispatch(submitNewDeckTitle(title))
       this.setState({ title: ''})
@@ -30,7 +38,6 @@ class NewDeck extends Component {
 
   render() {
     const { title } = this.state
-    const { navigation } = this.props
 
     return (
       <KeyboardAvoidingView style={styles.container} behavior='padding'>
@@ -41,7 +48,7 @@ class NewDeck extends Component {
           onChangeText={this.handleTextChange}
         />
         <FlashcardsButton
-          onPress={() => this.handleSubmit(title)}>
+          onPress={this.handleSubmit}>
           Submit
         </FlashcardsButton>
       </KeyboardAvoidingView>
