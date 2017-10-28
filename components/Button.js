@@ -12,6 +12,14 @@ export default function Button (props) {
 }
 
 const styles = StyleSheet.create({
-  submitButtton: SUBMIT_BUTTON,
-  submitButtonText: SUBMIT_BUTTON_TEXT
+  submitButtton: {
+    padding: 10,
+    borderRadius: 7,
+    height: 45,
+    marginBottom: 40
+  },
+  submitButtonText: {
+    fontSize: 22,
+    textAlign: 'center'
+  }
 })

@@ -19,18 +19,6 @@ export const LARGE_FONT = {
   marginBottom:40
 }
 
-export const SUBMIT_BUTTON = {
-  padding: 10,
-  borderRadius: 7,
-  height: 45,
-  marginBottom: 40
-}
-
-export const SUBMIT_BUTTON_TEXT = {
-  fontSize: 22,
-  textAlign: 'center'
-}
-
 export const TEXT_INPUT = {
   borderWidth:1,
   borderRadius: 7,
