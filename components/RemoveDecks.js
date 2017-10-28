@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import { removeAllDecks } from '../actions'
 import { Alert } from 'react-native'
 import { white, purple } from '../utils/colors'
+import { CONTAINER, MEDIUM_FONT } from '../utils/styles'
+import Button from './Button'
 
 class RemoveDecks extends Component {
   handleSubmit = () => {
@@ -15,37 +17,23 @@ class RemoveDecks extends Component {
   render() {
     return (
       <View style={styles.container} behavior='padding'>
-        <Text style={styles.statusMessage}>Delete all flashcards and decks? This cannot be undone.</Text>
-        <TouchableOpacity style={styles.submitBtn} onPress={this.handleSubmit}>
-          <Text style={styles.submitBtnText}>Delete All Data</Text>
-        </TouchableOpacity>
+        <Text style={styles.mediumFont}>Delete all flashcards and decks? This cannot be undone.</Text>
+        <Button
+          color={white}
+          backgroundColor={purple}
+          onPress={this.handleSubmit}>
+          Delete All Data
+        </Button>
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding:20,
-    justifyContent: 'center',
-    backgroundColor: white
-  },
-  statusMessage: {
-    fontSize: 30,
-    textAlign: 'center',
-    marginBottom: 20
-  },
-  submitBtn: {
-    backgroundColor: purple,
-    padding: 10,
-    borderRadius: 7,
-    height: 45
-  },
-  submitBtnText: {
-    color: white,
-    fontSize: 22,
-    textAlign: 'center'
+  container: CONTAINER,
+  mediumFont: {
+    ...MEDIUM_FONT,
+    paddingBottom: 40
   }
 })
 
