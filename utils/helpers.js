@@ -1,4 +1,4 @@
-import { Alert, AsyncStorage } from 'react-native'
+import { Alert, AsyncStorage, Platform } from 'react-native'
 import { Notifications, Permissions } from 'expo'
 
 const NOTIFICATION_KEY = 'Flashcards:notifications'
@@ -11,7 +11,12 @@ export function convertObjectToArrayWithKey(object) {
   })
 }
 
-
+export function removeHeaderIfAndroid() {
+  if(Platform.OS === 'android')
+  return {
+    header: null
+  }
+}
 export function validateTextInput(data,name) {
   if(!data) {
     Alert.alert('Error',`${name} may not be empty`)
