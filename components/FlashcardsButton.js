@@ -13,20 +13,20 @@ export default function FlashcardsButton (props) {
   }
 
   return (
-    <TouchableOpacity style={[styles.submitButtton,{backgroundColor}]} onPress={onPress}>
-      <Text style={styles.submitFlashcardsButtonText}>{children}</Text>
+    <TouchableOpacity style={[styles.button,{backgroundColor}]} onPress={onPress}>
+      <Text style={styles.buttonText}>{children}</Text>
     </TouchableOpacity>
   )
 }
 
 const styles = StyleSheet.create({
-  submitButtton: {
-    padding: 10,
+  button: {
     borderRadius: 7,
     height: 45,
-    marginBottom: 40
+    marginBottom: 40,
+    justifyContent: 'center'
   },
-  submitFlashcardsButtonText: {
+  buttonText: {
     fontSize: 22,
     textAlign: 'center',
     color: white
