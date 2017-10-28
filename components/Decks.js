@@ -5,6 +5,7 @@ import { convertObjectToArrayWithKey } from '../utils/helpers'
 import { fetchDecks } from '../actions'
 import Deck from './Deck'
 import { white } from '../utils/colors'
+import { CONTAINER, MEDIUM_FONT } from '../utils/styles'
 
 class Decks extends Component {
 
@@ -38,23 +39,15 @@ class Decks extends Component {
     }
     return (
       <View style={styles.container}>
-        <Text style={styles.statusMessage}>No flashcards yet. Please add a new deck!</Text>
+        <Text style={styles.mediumFont}>No flashcards yet. Please add a new deck!</Text>
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    padding:20,
-    backgroundColor:white
-  },
-  statusMessage: {
-    fontSize: 30,
-    textAlign: 'center'
-  }
+  container: CONTAINER,
+  mediumFont: MEDIUM_FONT
 })
 
 function mapStateToProps(store) {
