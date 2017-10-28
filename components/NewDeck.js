@@ -1,13 +1,27 @@
+/*
+  Flashcards: components/NewDeck.js
+  By Chris Leung
+
+  Description:
+
+  React component that allows user to create a new deck. Accomplishes this by
+  displaying a form, validating input and routing to the individual deck view
+  after the deck creation action has been dispatched to the Redux store.
+
+  Props:
+    navigation: <Object> Required. React Navigation screen navigation prop.
+    dispatch: <Function> Required. Dispatch function from the Redux store.
+    decks: <Object> Required. The decks object from the Redux store.
+*/
+
 import React,  { Component } from 'react'
 import { Text, TextInput, KeyboardAvoidingView, StyleSheet } from 'react-native'
-import { saveDeckTitle } from '../utils/api'
 import { connect } from 'react-redux'
 import { submitNewDeckTitle } from '../actions'
-import { validateTextInput, validateIsUnique } from '../utils/helpers'
-import { white, purple } from '../utils/colors'
-import FlashcardsButton from './FlashcardsButton'
-import { CONTAINER, LARGE_FONT, TEXT_INPUT } from '../utils/styles'
 import PropTypes from 'prop-types'
+import FlashcardsButton from './FlashcardsButton'
+import { validateTextInput, validateIsUnique } from '../utils/helpers'
+import { CONTAINER, LARGE_FONT, TEXT_INPUT } from '../utils/styles'
 
 class NewDeck extends Component {
 
@@ -41,8 +55,12 @@ class NewDeck extends Component {
     const { title } = this.state
 
     return (
-      <KeyboardAvoidingView style={styles.container} behavior='padding'>
-        <Text style={styles.largeFont}>What is the title of your new deck?</Text>
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior='padding'>
+        <Text style={styles.largeFont}>
+          What is the title of your new deck?
+        </Text>
         <TextInput
           style={styles.textInput}
           value={title}
