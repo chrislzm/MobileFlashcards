@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Platform } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import { Foundation, Entypo, MaterialIcons } from '@expo/vector-icons'
-import { purple, white } from './utils/colors'
+import { blue, white } from './utils/colors'
 import Decks from './components/Decks'
 import FlashcardsStatusBar from './components/FlashcardsStatusBar'
 import IndividualDeck from './components/IndividualDeck'
@@ -44,10 +44,10 @@ const Tabs = TabNavigator({
       headerMode: 'none'
     },
     tabBarOptions: {
-      activeTintColor: Platform.OS === 'ios' ?  purple : white,
+      activeTintColor: Platform.OS === 'ios' ?  blue : white,
       style: {
         height: 56,
-        backgroundColor: Platform.OS === 'ios' ? white : purple,
+        backgroundColor: Platform.OS === 'ios' ? white : blue,
         shadowColor: 'rgba(0, 0, 0, 0.24)',
         shadowOffset: {
           width: 0,
@@ -90,7 +90,7 @@ export default class App extends React.Component {
     return (
       <Provider store={createStore(reducer, applyMiddleware(thunk))}>
         <View style={{flex: 1}}>
-          <FlashcardsStatusBar backgroundColor={purple} barStyle='light-content'/>
+          <FlashcardsStatusBar backgroundColor={blue} barStyle='light-content'/>
           <MainNavigator />
         </View>
       </Provider>
