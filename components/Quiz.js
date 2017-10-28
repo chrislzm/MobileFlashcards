@@ -1,9 +1,10 @@
 import React,  { Component } from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
 import QuizComplete from './QuizComplete'
 import QuizQuestion from './QuizQuestion'
+import { CONTAINER } from '../utils/styles'
 
 class Quiz extends Component {
   state = {
@@ -44,7 +45,7 @@ class Quiz extends Component {
     }
 
     return (
-      <View>
+      <View style={styles.container}>
         { quizComplete && (
           <QuizComplete
             numCorrect={ correct }
@@ -68,6 +69,10 @@ class Quiz extends Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: CONTAINER
+})
 
 function mapStateToProps(state, props) {
   const { title }  = props.navigation.state.params
