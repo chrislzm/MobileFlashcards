@@ -1,12 +1,27 @@
+/*
+  Flashcards: components/IndividualDeck.js
+  By Chris Leung
+
+  Description:
+
+  React component that displays details of an individual deck along with options
+  to add new cards and start a quiz.
+
+  Props:
+    navigation: <Object> Required. React Navigation screen navigation prop.
+    title: <String> Required. The deck title.
+    questions: <Array> Required. The array of question objects for this deck.
+*/
+
 import React,  { Component } from 'react'
 import { View, Text, StyleSheet, Platform } from 'react-native'
 import { connect } from 'react-redux'
 import { Alert } from 'react-native'
-import { white, purple, gray } from '../utils/colors'
-import { CONTAINER, MEDIUM_FONT, LARGE_FONT } from '../utils/styles'
-import FlashcardsButton from './FlashcardsButton'
-import { removeHeaderIfAndroid } from '../utils/helpers'
 import PropTypes from 'prop-types'
+import FlashcardsButton from './FlashcardsButton'
+import { gray } from '../utils/colors'
+import { CONTAINER, MEDIUM_FONT, LARGE_FONT } from '../utils/styles'
+import { removeHeaderIfAndroid } from '../utils/helpers'
 
 class IndividualDeck extends Component {
 
@@ -33,8 +48,12 @@ class IndividualDeck extends Component {
     const numCards = questions.length
     return (
       <View style={styles.container}>
-        <Text style={styles.largeFont}>{title}</Text>
-        <Text style={styles.mediumFont}>{numCards} Cards</Text>
+        <Text style={styles.largeFont}>
+          {title}
+        </Text>
+        <Text style={styles.mediumFont}>
+          {numCards} Cards
+        </Text>
         <FlashcardsButton
           onPress={() => navigation.navigate('NewQuestion', {title})}>
           Add Card
@@ -61,6 +80,7 @@ function mapStateToProps(state, props) {
   const { title }  = props.navigation.state.params
   return ({
     title,
+    // The deck may not exist yet since it's created asynchronously
     questions: state.decks[title] ? state.decks[title].questions : []
   })
 }
