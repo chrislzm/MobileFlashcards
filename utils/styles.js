@@ -2,6 +2,13 @@ import { white, blue } from './colors'
 
 export const DEFAULT_BUTTON_COLOR = blue
 
+export const IOS_HEADER_BACK = {
+  headerBackTitleStyle: { color: white },
+  headerTintColor: white,
+  headerStyle: {
+      backgroundColor: blue
+  }
+}
 export const CONTAINER = {
   flex: 1,
   padding:20,
