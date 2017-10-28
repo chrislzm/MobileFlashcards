@@ -1,5 +1,5 @@
 import React,  { Component } from 'react'
-import { View, Text, TextInput, KeyboardAvoidingView, TouchableOpacity, StyleSheet } from 'react-native'
+import { Text, TextInput, KeyboardAvoidingView, StyleSheet } from 'react-native'
 import { saveDeckTitle } from '../utils/api'
 import { connect } from 'react-redux'
 import { submitNewDeckTitle } from '../actions'
@@ -43,8 +43,6 @@ class NewDeck extends Component {
           onChangeText={this.handleTextChange}
         />
         <Button
-          color={white}
-          backgroundColor={purple}
           onPress={() => this.handleSubmit(title)}>
           Submit
         </Button>

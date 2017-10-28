@@ -1,5 +1,5 @@
 import React,  { Component } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { Alert } from 'react-native'
 import { white, purple, gray } from '../utils/colors'
@@ -24,14 +24,10 @@ class IndividualDeck extends Component {
         <Text style={styles.largeFont}>{title}</Text>
         <Text style={styles.mediumFont}>{numCards} Cards</Text>
         <Button
-          color={white}
-          backgroundColor={purple}
           onPress={() => navigation.navigate('NewQuestion', {title})}>
           Add Card
         </Button>
         <Button
-          color={white}
-          backgroundColor={purple}
           onPress={() => this.startQuiz(numCards,navigation,title)}>
           Start Quiz
         </Button>

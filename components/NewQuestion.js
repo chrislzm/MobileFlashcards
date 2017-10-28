@@ -49,8 +49,6 @@ class NewQuestion extends Component {
           onChangeText={(input) => this.handleTextChange('answer',input)}
         />
         <Button
-          color={white}
-          backgroundColor={purple}
           onPress={this.handleSubmit}>
           Submit
         </Button>

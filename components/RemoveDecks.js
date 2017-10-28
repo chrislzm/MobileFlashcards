@@ -1,5 +1,5 @@
 import React,  { Component } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import { saveDeckTitle } from '../utils/api'
 import { connect } from 'react-redux'
 import { removeAllDecks } from '../actions'
@@ -19,8 +19,6 @@ class RemoveDecks extends Component {
       <View style={styles.container} behavior='padding'>
         <Text style={styles.mediumFont}>Delete all flashcards and decks? This cannot be undone.</Text>
         <Button
-          color={white}
-          backgroundColor={purple}
           onPress={this.handleSubmit}>
           Delete All Data
         </Button>
