@@ -1,4 +1,6 @@
-import { white } from './colors'
+import { white, blue } from './colors'
+
+export const DEFAULT_BUTTON_COLOR = blue
 
 export const CONTAINER = {
   flex: 1,
@@ -17,6 +19,11 @@ export const LARGE_FONT = {
   fontSize: 40,
   textAlign: 'center',
   marginBottom:40
+}
+
+export const SMALL_FONT = {
+  fontSize: 15,
+  textAlign: 'center'
 }
 
 export const TEXT_INPUT = {
