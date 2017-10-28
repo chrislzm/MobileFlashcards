@@ -1,18 +1,35 @@
+/*
+  Flashcards: components/NewDeck.js
+  By Chris Leung
+
+  Description:
+
+  React component that allows user to create a new deck. Accomplishes this by
+  displaying a form, validating input and routing to the individual deck view
+  after the deck creation action has been dispatched to the Redux store.
+
+  Props:
+    navigation: <Object> Required. React Navigation screen navigation prop.
+    title: <String> Required. Passed via navigation.state.params. Contains the
+      title of the deck we are adding a new card to.
+    dispatch: <Function> Required. Dispatch function from the Redux store.
+*/
+
 import React,  { Component } from 'react'
-import { Text, TextInput, KeyboardAvoidingView, Alert, StyleSheet, Platform } from 'react-native'
+import { Text, TextInput, KeyboardAvoidingView, Alert, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { submitNewQuestion } from '../actions'
+import PropTypes from 'prop-types'
+import FlashcardsButton from './FlashcardsButton'
 import { validateTextInput, removeHeaderIfAndroid } from '../utils/helpers'
 import { CONTAINER, LARGE_FONT, MEDIUM_FONT, TEXT_INPUT } from '../utils/styles'
-import { white, purple, gray } from '../utils/colors'
-import FlashcardsButton from './FlashcardsButton'
-import PropTypes from 'prop-types'
+import { gray } from '../utils/colors'
 
 class NewQuestion extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    navigation: PropTypes.object.isRequired
+    navigation: PropTypes.object.isRequired,
   }
 
   static navigationOptions = ({navigation}) => (
@@ -45,9 +62,15 @@ class NewQuestion extends Component {
     const { question, answer } = this.state
 
     return (
-      <KeyboardAvoidingView style={styles.container} behavior='padding'>
-        <Text style={styles.largeFont}>Add a New Card</Text>
-        <Text style={styles.mediumFont}>Question</Text>
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior='padding'>
+        <Text style={styles.largeFont}>
+          Add a New Card
+        </Text>
+        <Text style={styles.mediumFont}>
+          Question
+        </Text>
         <TextInput
           style={styles.textInput}
           value={question}
