@@ -31,10 +31,7 @@ class RemoveDecks extends Component {
 
 const styles = StyleSheet.create({
   container: CONTAINER,
-  mediumFont: {
-    ...MEDIUM_FONT,
-    paddingBottom: 40
-  }
+  mediumFont: MEDIUM_FONT
 })
 
 export default connect()(RemoveDecks)
