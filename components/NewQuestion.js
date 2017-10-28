@@ -1,9 +1,11 @@
 import React,  { Component } from 'react'
-import { View, Text, TextInput, KeyboardAvoidingView, TouchableOpacity } from 'react-native'
+import { Text, TextInput, KeyboardAvoidingView, Alert, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { submitNewQuestion } from '../actions'
 import { validateTextInput } from '../utils/helpers'
-import { Alert } from 'react-native'
+import { CONTAINER, LARGE_FONT, MEDIUM_FONT, TEXT_INPUT } from '../utils/styles'
+import { white, purple, gray } from '../utils/colors'
+import Button from './Button'
 
 class NewQuestion extends Component {
   state = {
@@ -32,24 +34,39 @@ class NewQuestion extends Component {
     const { question, answer } = this.state
 
     return (
-      <KeyboardAvoidingView behavior='padding'>
-        <Text>Add Card</Text>
-        <Text>Question:</Text>
+      <KeyboardAvoidingView style={styles.container} behavior='padding'>
+        <Text style={styles.largeFont}>Add a New Card</Text>
+        <Text style={styles.mediumFont}>Question</Text>
         <TextInput
+          style={styles.textInput}
           value={question}
           onChangeText={(input) => this.handleTextChange('question',input)}
         />
-        <Text>Answer:</Text>
+        <Text style={styles.mediumFont}>Answer</Text>
         <TextInput
+          style={styles.textInput}
           value={answer}
           onChangeText={(input) => this.handleTextChange('answer',input)}
         />
-        <TouchableOpacity onPress={this.handleSubmit}>
-          <Text>Submit</Text>
-        </TouchableOpacity>
+        <Button
+          color={white}
+          backgroundColor={purple}
+          onPress={this.handleSubmit}>
+          Submit
+        </Button>
       </KeyboardAvoidingView>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: CONTAINER,
+  largeFont: LARGE_FONT,
+  mediumFont: {
+    ...MEDIUM_FONT,
+    color: gray
+  },
+  textInput: TEXT_INPUT
+})
 
 export default connect()(NewQuestion)
