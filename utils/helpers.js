@@ -17,6 +17,16 @@ export function removeHeaderIfAndroid() {
     header: null
   }
 }
+
+export function validateIsUnique(name,decks) {
+  const deckNames = Object.keys(decks)
+  if(deckNames.includes(name)) {
+    Alert.alert(`\"${name}\" already exists`, "Please choose a different name")
+    return false
+  }
+  return true
+}
+
 export function validateTextInput(data,name) {
   if(!data) {
     Alert.alert('Error',`${name} may not be empty`)
