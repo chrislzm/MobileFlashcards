@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
+import Button from './Button'
+import { CONTAINER, MEDIUM_FONT, SMALL_FONT } from '../utils/styles'
+import { red, green, gray } from '../utils/colors'
 
 export default class QuizQuestion extends Component {
 
@@ -11,37 +14,53 @@ export default class QuizQuestion extends Component {
     this.setState((prevState) => ({ showAnswer: !prevState.showAnswer }))
   }
 
+  submitAnswer = (submitHandler) => {
+    this.setState({ showAnswer: false})
+    submitHandler()
+  }
+
   render() {
     const { title, question, answer, questionNum, numQuestions, handleCorrect, handleIncorrect } = this.props
     const { showAnswer } = this.state
 
-    return (
-      <View>
-        <Text>{title}, Question {questionNum}/{numQuestions}</Text>
-        {
-          !showAnswer && (
-            <View>
-              <Text>{question}</Text>
-              <TouchableOpacity onPress={this.toggleShowAnswer}>
-                <Text>Answer</Text>
-              </TouchableOpacity>
-            </View>
-          )}
-          {  showAnswer && (
-            <View>
-              <Text>{answer}</Text>
-              <TouchableOpacity onPress={this.toggleShowAnswer}>
-                <Text>Question</Text>
-              </TouchableOpacity>
-            </View>
-          )}
-          <TouchableOpacity onPress={handleCorrect}>
-            <Text>Correct</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={handleIncorrect}>
-            <Text>Incorrect</Text>
-          </TouchableOpacity>
-        </View>
-      )
+    let questionText, toggleButtonText
+
+    if(showAnswer) {
+      questionText = answer
+      toggleButtonText = 'Show Question'
+    } else {
+      questionText = question
+      toggleButtonText = 'Show Answer'
     }
+
+    return (
+      <View style={styles.container}>
+        <View>
+          <Text style={[styles.mediumFont,{color: gray}]}>{questionNum}/{numQuestions}</Text>
+          <Text style={styles.mediumFont}>{questionText}</Text>
+          <Button
+            onPress={this.toggleShowAnswer}>
+            {toggleButtonText}
+          </Button>
+        </View>
+        <Button
+          backgroundColor={green}
+          onPress={() => this.submitAnswer(handleCorrect)}>
+          Correct
+        </Button>
+        <Button
+          backgroundColor={red}
+          onPress={() => this.submitAnswer(handleCorrect)}>
+          Incorrect
+        </Button>
+        <Text style={styles.smallFont}>Currently studying "{title}"</Text>
+      </View>
+    )
   }
+}
+
+const styles = StyleSheet.create({
+  container: CONTAINER,
+  mediumFont: MEDIUM_FONT,
+  smallFont: SMALL_FONT
+})
