@@ -3,7 +3,6 @@ import { Text, TextInput, KeyboardAvoidingView, StyleSheet } from 'react-native'
 import { saveDeckTitle } from '../utils/api'
 import { connect } from 'react-redux'
 import { submitNewDeckTitle } from '../actions'
-import { Alert } from 'react-native'
 import { validateTextInput } from '../utils/helpers'
 import { white, purple } from '../utils/colors'
 import Button from './Button'
@@ -25,7 +24,6 @@ class NewDeck extends Component {
     if(validateTextInput(title,'New deck name')) {
       dispatch(submitNewDeckTitle(title))
       this.setState({ title: ''})
-      Alert.alert('Success!','Your deck has been created.')
       navigation.navigate('IndividualDeck',{title})
     }
   }
