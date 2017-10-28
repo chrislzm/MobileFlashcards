@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import FlashcardsButton from './FlashcardsButton'
 import { CONTAINER, MEDIUM_FONT, SMALL_FONT } from '../utils/styles'
 import { red, green, gray } from '../utils/colors'
+import PropTypes from 'prop-types'
 
 export default class QuizQuestion extends Component {
 
@@ -64,3 +65,13 @@ const styles = StyleSheet.create({
   mediumFont: MEDIUM_FONT,
   smallFont: SMALL_FONT
 })
+
+QuizQuestion.propTypes = {
+  title: PropTypes.string.isRequired,
+  question: PropTypes.string.isRequired,
+  answer: PropTypes.string.isRequired,
+  questionNum: PropTypes.number.isRequired,
+  numQuestions: PropTypes.number.isRequired,
+  handleCorrect: PropTypes.func.isRequired,
+  handleIncorrect: PropTypes.func.isRequired
+}

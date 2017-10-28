@@ -6,9 +6,16 @@ import QuizComplete from './QuizComplete'
 import QuizQuestion from './QuizQuestion'
 import { CONTAINER } from '../utils/styles'
 import { removeHeaderIfAndroid } from '../utils/helpers'
+import PropTypes from 'prop-types'
 
 class Quiz extends Component {
-  
+
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    navigation: PropTypes.object.isRequired,
+    questions: PropTypes.array.isRequired
+  }
+
   static navigationOptions = ({navigation}) => (
     removeHeaderIfAndroid()
   )

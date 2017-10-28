@@ -2,6 +2,7 @@ import React from 'react'
 import { Text, TouchableOpacity, StyleSheet } from 'react-native'
 import { DEFAULT_BUTTON_COLOR } from '../utils/styles'
 import { white } from '../utils/colors'
+import PropTypes from 'prop-types'
 
 export default function FlashcardsButton (props) {
   const { onPress, children } = props
@@ -32,3 +33,9 @@ const styles = StyleSheet.create({
     color: white
   }
 })
+
+FlashcardsButton.propTypes = {
+  onPress: PropTypes.func.isRequired,
+  children: PropTypes.string.isRequired,
+  backgroundColor: PropTypes.string
+}

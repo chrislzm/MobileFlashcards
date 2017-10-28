@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet} from 'react-native'
 import FlashcardsButton from './FlashcardsButton'
 import { CONTAINER, MEDIUM_FONT, LARGE_FONT } from '../utils/styles'
+import PropTypes from 'prop-types'
 
 export default function QuizComplete (props) {
   const { navigation, restartQuiz, numCorrect, numQuestions } = props
@@ -27,3 +28,10 @@ const styles = StyleSheet.create({
   largeFont: LARGE_FONT,
   mediumFont: MEDIUM_FONT
 })
+
+QuizComplete.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  restartQuiz: PropTypes.func.isRequired,
+  numCorrect: PropTypes.number.isRequired,
+  numQuestions: PropTypes.number.isRequired
+}

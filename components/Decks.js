@@ -6,8 +6,14 @@ import { fetchDecks } from '../actions'
 import Deck from './Deck'
 import { white } from '../utils/colors'
 import { CONTAINER, MEDIUM_FONT } from '../utils/styles'
+import PropTypes from 'prop-types'
 
 class Decks extends Component {
+
+  static propTypes = {
+    navigation: PropTypes.object.isRequired,
+    decks: PropTypes.array.isRequired
+  }
 
   componentDidMount() {
     this.props.dispatch(fetchDecks())

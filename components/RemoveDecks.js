@@ -7,8 +7,14 @@ import { Alert } from 'react-native'
 import { white, purple } from '../utils/colors'
 import { CONTAINER, MEDIUM_FONT } from '../utils/styles'
 import FlashcardsButton from './FlashcardsButton'
+import PropTypes from 'prop-types'
 
 class RemoveDecks extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+  }
+
   handleSubmit = () => {
     this.props.dispatch(removeAllDecks())
     Alert.alert('Success!','All flashcards and decks have been removed')

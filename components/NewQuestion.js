@@ -6,8 +6,14 @@ import { validateTextInput, removeHeaderIfAndroid } from '../utils/helpers'
 import { CONTAINER, LARGE_FONT, MEDIUM_FONT, TEXT_INPUT } from '../utils/styles'
 import { white, purple, gray } from '../utils/colors'
 import FlashcardsButton from './FlashcardsButton'
+import PropTypes from 'prop-types'
 
 class NewQuestion extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    navigation: PropTypes.object.isRequired
+  }
 
   static navigationOptions = ({navigation}) => (
     removeHeaderIfAndroid()

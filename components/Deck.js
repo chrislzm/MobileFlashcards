@@ -1,6 +1,7 @@
 import React from 'react'
 import { Text, TouchableOpacity, StyleSheet } from 'react-native'
 import { gray } from '../utils/colors'
+import PropTypes from 'prop-types'
 
 export default function Deck (props) {
   const { navigation, title, numCards } = props
@@ -34,3 +35,9 @@ const styles = StyleSheet.create({
     fontWeight:'bold'
   }
 })
+
+Deck.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
+  numCards: PropTypes.number.isRequired
+}

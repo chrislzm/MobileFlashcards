@@ -6,8 +6,15 @@ import { white, purple, gray } from '../utils/colors'
 import { CONTAINER, MEDIUM_FONT, LARGE_FONT } from '../utils/styles'
 import FlashcardsButton from './FlashcardsButton'
 import { removeHeaderIfAndroid } from '../utils/helpers'
+import PropTypes from 'prop-types'
 
 class IndividualDeck extends Component {
+
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    questions: PropTypes.array.isRequired,
+    navigation: PropTypes.object.isRequired
+  }
 
   static navigationOptions = ({navigation}) => (
     removeHeaderIfAndroid()
