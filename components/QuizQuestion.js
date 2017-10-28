@@ -50,7 +50,7 @@ export default class QuizQuestion extends Component {
         </Button>
         <Button
           backgroundColor={red}
-          onPress={() => this.submitAnswer(handleCorrect)}>
+          onPress={() => this.submitAnswer(handleIncorrect)}>
           Incorrect
         </Button>
         <Text style={styles.smallFont}>Currently studying "{title}"</Text>
