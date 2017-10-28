@@ -1,14 +1,38 @@
+/*
+  Flashcards: components/Deck.js
+  By Chris Leung
+
+  Description:
+
+  React functional component used in the renderItem callback of a React Native
+  FlatList component. Displays deck information (title and number of cards) that
+  when tapped, navigates the user to the deck's individual deck view
+  (IndividualDeck component).
+
+  Props:
+    navigation: <Object> Required. React Navigation screen navigation prop.
+    title: <String> Required. The title of the deck.
+    numCards: <Integer> Required. The number of cards in the deck.
+*/
+
 import React from 'react'
 import { Text, TouchableOpacity, StyleSheet } from 'react-native'
-import { gray } from '../utils/colors'
 import PropTypes from 'prop-types'
+import { gray } from '../utils/colors'
 
 export default function Deck (props) {
   const { navigation, title, numCards } = props
   return (
-    <TouchableOpacity key={title} style={styles.deck} onPress={() => navigation.navigate('IndividualDeck',{ title })}>
-      <Text style={styles.title}>{title}</Text>
-      <Text style={styles.cards}>{numCards} cards</Text>
+    <TouchableOpacity
+      key={title}
+      style={styles.deck}
+      onPress={() => navigation.navigate('IndividualDeck',{ title })}>
+      <Text style={styles.title}>
+        {title}
+      </Text>
+      <Text style={styles.cards}>
+        {numCards} cards
+      </Text>
     </TouchableOpacity>
   )
 }
