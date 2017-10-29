@@ -1,5 +1,5 @@
 /*
-  Readable: actions/index.js
+  Flashcards: actions/index.js
   By Chris Leung
 
   Description:

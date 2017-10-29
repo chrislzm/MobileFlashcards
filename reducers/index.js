@@ -1,5 +1,5 @@
 /*
-  Readable: reducers/index.js
+  Flashcards: reducers/index.js
   By Chris Leung
 
   Description:
