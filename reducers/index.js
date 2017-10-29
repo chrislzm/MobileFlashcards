@@ -15,7 +15,6 @@ import {
 
 const DEFAULT_DECKS_STATE = {}
 
-// Keys in our state will be days, values will be the metrics for the specific day
 function decks (state = DEFAULT_DECKS_STATE, action) {
   const { title, question, questions } = action
   switch(action.type) {
