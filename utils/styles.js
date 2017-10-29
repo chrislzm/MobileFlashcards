@@ -6,13 +6,14 @@
 
   Contains shared React Native component styles used throughout the Flashcards
   app.
-  
+
 */
 
 import { white, blue } from './colors'
 
 export const DEFAULT_BUTTON_COLOR = blue
 
+// We hide the back-button header on Android, so this style only applies to iOS
 export const IOS_HEADER_BACK = {
   headerBackTitleStyle: { color: white },
   headerTintColor: white,
