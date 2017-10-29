@@ -54,7 +54,7 @@ const Tabs = TabNavigator({
   }
 }, {
     navigationOptions: {
-      title: 'Flashcards',
+      title: 'Mobile Flashcards',
       headerTitleStyle: { color: white },
       headerStyle: {
           backgroundColor: blue
