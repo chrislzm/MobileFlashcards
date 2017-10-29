@@ -10,7 +10,7 @@ Installation
 ------------
 1. Install [Expo](https://expo.io/) on your Android/iOS device or install an Android/iOS simulator on your computer
 2. Install [Node.js](https://nodejs.org/en/) and [Create React Native App](https://github.com/react-community/create-react-native-app)
-3. git clone or fork the [Flashcards project](https://github.com/chrislzm/Flashcards)
+3. git clone or fork the [Mobile Flashcards project](https://github.com/chrislzm/Flashcards)
 4. Run 'npm install' and then 'npm start' in the project directory
 5. Follow the instructions to launch the app in the Expo app or in one of your simulators
 
