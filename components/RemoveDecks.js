@@ -13,7 +13,6 @@
 
 import React,  { Component } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { saveDeckTitle } from '../utils/api'
 import { connect } from 'react-redux'
 import { removeAllDecks } from '../actions'
 import { Alert } from 'react-native'
