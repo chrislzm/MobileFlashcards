@@ -1,3 +1,14 @@
+/*
+  Readable: utils/styles.js
+  By Chris Leung
+
+  Description:
+
+  Contains shared React Native component styles used throughout the Flashcards
+  app.
+  
+*/
+
 import { white, blue } from './colors'
 
 export const DEFAULT_BUTTON_COLOR = blue

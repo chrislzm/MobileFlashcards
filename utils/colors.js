@@ -1,3 +1,12 @@
+/*
+  Flashcards: utils/colors.js
+  By Chris Leung
+
+  Description:
+
+  Provides color codes used throughout the Flashcards app.
+*/
+
 export const gray = '#757575'
 export const white = '#fff'
 export const red = '#ba0d0d'
