@@ -1,3 +1,26 @@
+/*
+  Flashcards: components/QuizQuestion.js
+  By Chris Leung
+
+  Description:
+
+  React Native component that displays a quiz question along with controls to
+  (1) toggle between showing the question and the answer, (2) submit a "correct"
+  answer and (3) submit an  "incorrect" answer.
+
+  Props:
+    title: <String> Required. Contains the title of the deck the user is being
+      quizzed on.
+    questionText: <String> Required. The text of the quiz question.
+    answerText: <String> Required. The text of the quiz question.
+    questionNum: <Integer> Required. The question number (of total questions).
+    numQuestions: <Integer> Required. The total number of questions.
+    handleCorrect: <Function> Required. Callback that handles user submission
+      of a "correct" answer.
+    handleInorrect: <Function> Required. Callback that handles user submission
+      of an "incorrect" answer.
+*/
+
 import React, { Component } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import FlashcardsButton from './FlashcardsButton'
@@ -21,24 +44,28 @@ export default class QuizQuestion extends Component {
   }
 
   render() {
-    const { title, question, answer, questionNum, numQuestions, handleCorrect, handleIncorrect } = this.props
+    const { title, questionText, answerText, questionNum, numQuestions, handleCorrect, handleIncorrect } = this.props
     const { showAnswer } = this.state
 
-    let questionText, toggleFlashcardsButtonText
+    let textContent, toggleFlashcardsButtonText
 
     if(showAnswer) {
-      questionText = answer
+      textContent = answerText
       toggleFlashcardsButtonText = 'Show Question'
     } else {
-      questionText = question
+      textContent = questionText
       toggleFlashcardsButtonText = 'Show Answer'
     }
 
     return (
       <View style={styles.container}>
         <View>
-          <Text style={[styles.mediumFont,{color: gray}]}>{questionNum}/{numQuestions}</Text>
-          <Text style={styles.mediumFont}>{questionText}</Text>
+          <Text style={[styles.mediumFont,{color: gray}]}>
+            {questionNum}/{numQuestions}
+          </Text>
+          <Text style={styles.mediumFont}>
+            {textContent}
+          </Text>
           <FlashcardsButton
             onPress={this.toggleShowAnswer}>
             {toggleFlashcardsButtonText}
@@ -54,7 +81,9 @@ export default class QuizQuestion extends Component {
           onPress={() => this.submitAnswer(handleIncorrect)}>
           Incorrect
         </FlashcardsButton>
-        <Text style={styles.smallFont}>Currently studying "{title}"</Text>
+        <Text style={styles.smallFont}>
+          Currently studying "{title}"
+        </Text>
       </View>
     )
   }
@@ -68,8 +97,8 @@ const styles = StyleSheet.create({
 
 QuizQuestion.propTypes = {
   title: PropTypes.string.isRequired,
-  question: PropTypes.string.isRequired,
-  answer: PropTypes.string.isRequired,
+  questionText: PropTypes.string.isRequired,
+  answerText: PropTypes.string.isRequired,
   questionNum: PropTypes.number.isRequired,
   numQuestions: PropTypes.number.isRequired,
   handleCorrect: PropTypes.func.isRequired,
