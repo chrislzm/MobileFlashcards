@@ -1,5 +1,5 @@
 /*
-  Flashcards: components/RemoveDecks.js
+  Mobile Flashcards: components/RemoveDecks.js
   By Chris Leung
 
   Description:

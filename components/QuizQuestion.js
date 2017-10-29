@@ -1,5 +1,5 @@
 /*
-  Flashcards: components/QuizQuestion.js
+  Mobile Flashcards: components/QuizQuestion.js
   By Chris Leung
 
   Description:
@@ -17,7 +17,7 @@
     numQuestions: <Integer> Required. The total number of questions.
     handleCorrect: <Function> Required. Callback that handles user submission
       of a "correct" answer.
-    handleInorrect: <Function> Required. Callback that handles user submission
+    handleIncorrect: <Function> Required. Callback that handles user submission
       of an "incorrect" answer.
 */
 
