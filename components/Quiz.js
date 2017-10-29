@@ -1,9 +1,28 @@
+/*
+  Flashcards: components/Quiz.js
+  By Chris Leung
+
+  Description:
+
+  React component that launches and runs a quiz for a given deck of flashcards.
+  Uses QuizQuestion component to display the questions, and QuizComplete
+  component to display the result once the quiz is complete. If a quiz is
+  completed, it clears the local notification (a reminder to take a quiz) for
+  the current day.
+
+  Props:
+    navigation: <Object> Required. React Navigation screen navigation prop.
+    title: <String> Required. Passed via navigation.state.params. Contains the
+      title of the deck we are adding a new card to.
+    questions: <Array> Required. The array of question objects for this deck.
+*/
+
 import React,  { Component } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
-import QuizComplete from './QuizComplete'
 import QuizQuestion from './QuizQuestion'
+import QuizComplete from './QuizComplete'
 import { CONTAINER } from '../utils/styles'
 import { removeHeaderIfAndroid } from '../utils/helpers'
 import PropTypes from 'prop-types'
@@ -21,17 +40,18 @@ class Quiz extends Component {
   )
 
   state = {
-    index: 0,
-    correct: 0
+    questionIndex: 0,
+    numCorrect: 0
   }
 
-  submitAnswer = (correct,index,numQuestions) => {
-    let delta = correct ? 1 : 0
+  handleSubmitAnswer = (isCorrect,questionIndex,numQuestions) => {
+    let points = isCorrect ? 1 : 0
     this.setState((prevState) => ({
-      index: prevState.index+1,
-      correct: prevState.correct+delta
+      questionIndex: prevState.questionIndex+1,
+      numCorrect: prevState.numCorrect+points
     }))
-    if(index+1 === numQuestions) {
+    // If quiz complete, clear notifications and set a reminder for tomorrow
+    if(questionIndex+1 === numQuestions) {
       clearLocalNotification()
       .then(setLocalNotification)
     }
@@ -39,29 +59,29 @@ class Quiz extends Component {
 
   restartQuiz = () => {
     this.setState({
-      index: 0,
-      correct: 0
+      questionIndex: 0,
+      numCorrect: 0
     })
   }
 
   render() {
     const { title, questions, navigation } = this.props
-    const { index, correct, showAnswer } = this.state
+    const { questionIndex, numCorrect } = this.state
+
     const numQuestions = questions.length
+    const quizComplete = questionIndex === numQuestions
 
-    const quizComplete = index === numQuestions
-
-    let question, answer
+    let questionText, answerText
     if(!quizComplete) {
-      question = questions[index].question
-      answer = questions[index].answer
+      questionText = questions[questionIndex].question
+      answerText = questions[questionIndex].answer
     }
 
     return (
       <View style={styles.container}>
         { quizComplete && (
           <QuizComplete
-            numCorrect={ correct }
+            numCorrect={ numCorrect }
             numQuestions={ numQuestions }
             restartQuiz={ this.restartQuiz }
             navigation={ navigation }
@@ -70,12 +90,12 @@ class Quiz extends Component {
         { !quizComplete && (
           <QuizQuestion
              title={title}
-             question={question}
-             answer={answer}
-             questionNum={index+1}
+             question={questionText}
+             answer={answerText}
+             questionNum={questionIndex+1}
              numQuestions={numQuestions}
-             handleCorrect={() => this.submitAnswer(true,index,numQuestions)}
-             handleIncorrect={() => this.submitAnswer(false,index,numQuestions)}
+             handleCorrect={() => this.handleSubmitAnswer(true,questionIndex,numQuestions)}
+             handleIncorrect={() => this.handleSubmitAnswer(false,questionIndex,numQuestions)}
           />
         )}
       </View>
