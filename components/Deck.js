@@ -4,9 +4,9 @@
 
   Description:
 
-  React functional component used in the renderItem callback of a React Native
-  FlatList component. Displays deck information (title and number of cards) that
-  when tapped, navigates the user to the deck's individual deck view
+  React Native functional component used in the renderItem callback of a React
+  Native FlatList component. Displays deck information (title and number of
+  cards) that when tapped, navigates the user to the deck's individual deck view
   (IndividualDeck component).
 
   Props:

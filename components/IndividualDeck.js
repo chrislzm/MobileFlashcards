@@ -4,8 +4,8 @@
 
   Description:
 
-  React component that displays details of an individual deck along with options
-  to add new cards and start a quiz.
+  React Native component that displays details of an individual deck along with
+  options to add new cards and start a quiz.
 
   Props:
     navigation: <Object> Required. React Navigation screen navigation prop.

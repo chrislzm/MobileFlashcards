@@ -4,7 +4,7 @@
 
   Description:
 
-  React component that displays a list of decks.
+  React Native component that displays a list of decks.
 
   Props:
     navigation: <Object> Required. React Navigation screen navigation prop.

@@ -4,7 +4,8 @@
 
   Description:
 
-  React functional component that implements a button used throughtout this app.
+  React Native functional component that implements a button used throughtout
+  this app.
 
   Props:
     onPress: <Function> Required. Callback function for the onPress event.

@@ -4,9 +4,9 @@
 
   Description:
 
-  React component that allows user to create a new deck. Accomplishes this by
-  displaying a form, validating input and routing to the individual deck view
-  after the deck creation action has been dispatched to the Redux store.
+  React Native component that allows user to create a new deck. Accomplishes
+  this by displaying a form, validating input and routing to the individual deck
+  view after the deck creation action has been dispatched to the Redux store.
 
   Props:
     navigation: <Object> Required. React Navigation screen navigation prop.

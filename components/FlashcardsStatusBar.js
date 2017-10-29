@@ -4,7 +4,7 @@
 
   Description:
 
-  React functional component that implements a custom status bar used
+  React Native functional component that implements a custom status bar used
   throughtout this app.
 
   Props:
