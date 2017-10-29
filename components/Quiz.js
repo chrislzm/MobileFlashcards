@@ -4,11 +4,11 @@
 
   Description:
 
-  React component that launches and runs a quiz for a given deck of flashcards.
-  Uses QuizQuestion component to display the questions, and QuizComplete
-  component to display the result once the quiz is complete. If a quiz is
-  completed, it clears the local notification (a reminder to take a quiz) for
-  the current day.
+  React Native component that launches and runs a quiz for a given deck of
+  flashcards. Uses QuizQuestion component to display the questions, and
+  QuizComplete component to display the result once the quiz is complete. If a
+  quiz is completed, it clears the local notification (a reminder to take a
+  quiz) for the current day.
 
   Props:
     navigation: <Object> Required. React Navigation screen navigation prop.
@@ -90,8 +90,8 @@ class Quiz extends Component {
         { !quizComplete && (
           <QuizQuestion
              title={title}
-             question={questionText}
-             answer={answerText}
+             questionText={questionText}
+             answerText={answerText}
              questionNum={questionIndex+1}
              numQuestions={numQuestions}
              handleCorrect={() => this.handleSubmitAnswer(true,questionIndex,numQuestions)}
