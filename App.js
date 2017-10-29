@@ -1,5 +1,18 @@
+/*
+  Flashcards: App.js
+  By Chris Leung
+
+  Description:
+
+  Renders the Flashcards app. Uses a TabNavigator contained within a
+  StackNavigator to display and route views. Uses a Redux store for convenience
+  so that components can directly access data when needed. Note that the Redux
+  store uses thunk to completely abstract-away persistent data access from the
+  app's React Native components.
+*/
+
 import React from 'react';
-import { StyleSheet, Text, View, Platform } from 'react-native';
+import { StyleSheet, View, Platform } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import { Foundation, Entypo, MaterialIcons } from '@expo/vector-icons'
 import { blue, white } from './utils/colors'
@@ -94,6 +107,7 @@ const MainNavigator = StackNavigator({
 
 export default class App extends React.Component {
   componentDidMount() {
+    // Sets a study reminder if one hasn't already been set
     setLocalNotification()
   }
 
