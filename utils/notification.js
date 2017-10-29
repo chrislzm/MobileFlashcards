@@ -30,7 +30,7 @@ import {
   from './api'
 
   export function clearLocalNotification() {
-    clearNotification()
+    return clearNotification()
     .then(Notifications.cancelAllScheduledNotificationsAsync())
   }
 
