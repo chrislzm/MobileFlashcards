@@ -23,8 +23,8 @@ Development Notes
 -----------------
 This app has been tested on the following platforms:
 1. iPhone 6S (iOS 10.3.3) device
-2. iPhone X (iOS 11.0) MacOS simulator
-3. Samsung Galaxy S8 (Android 7.0 API 24) Genymotion simulator
+2. iPhone X (iOS 11.0) Xcode simulator
+3. Samsung Galaxy S8 (Android 7.0 API 24) Genymotion simulator (MacOS)
 
 Decks and their title and cards are stored in both AsyncStorage and the Redux store with the following structure:
 ```
