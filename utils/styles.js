@@ -1,11 +1,11 @@
 /*
-  Readable: utils/styles.js
+  Mobile Flashcards: utils/styles.js
   By Chris Leung
 
   Description:
 
-  Contains shared React Native component styles used throughout the Flashcards
-  app.
+  Contains shared React Native component styles used throughout the Mobile
+  Flashcards app.
 
 */
 

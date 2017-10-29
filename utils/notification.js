@@ -1,5 +1,5 @@
 /*
-Readable: utils/notification.js
+Mobile Flashcards: utils/notification.js
 By Chris Leung
 
 Description:

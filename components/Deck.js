@@ -1,5 +1,5 @@
 /*
-  Flashcards: components/Deck.js
+  Mobile Flashcards: components/Deck.js
   By Chris Leung
 
   Description:

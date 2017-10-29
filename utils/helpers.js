@@ -1,10 +1,10 @@
 /*
-  Readable: utils/helpers.js
+  Mobile Flashcards: utils/helpers.js
   By Chris Leung
 
   Description:
 
-  Contains helper functions used throughout the Flashcards app.
+  Contains helper functions used throughout the Mobile Flashcards app.
 */
 
 import { Alert, Platform } from 'react-native'

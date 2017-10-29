@@ -1,5 +1,5 @@
 /*
-  Flashcards: components/QuizComplete.js
+  Mobile Flashcards: components/QuizComplete.js
   By Chris Leung
 
   Description:

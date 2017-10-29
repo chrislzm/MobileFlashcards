@@ -1,5 +1,5 @@
 /*
-  Flashcards: components/FlashcardsButton.js
+  Mobile Flashcards: components/FlashcardsButton.js
   By Chris Leung
 
   Description:

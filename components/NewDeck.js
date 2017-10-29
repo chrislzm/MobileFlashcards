@@ -1,5 +1,5 @@
 /*
-  Flashcards: components/NewDeck.js
+  Mobile Flashcards: components/NewDeck.js
   By Chris Leung
 
   Description:

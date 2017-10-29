@@ -1,11 +1,11 @@
 /*
-  Flashcards: utils/api.js
+  Mobile Flashcards: utils/api.js
   By Chris Leung
 
   Description:
 
-  Persistent storage API for the Flashcards app. Provides convenience functions
-  to store, retrieve, and clear data in AsyncStorage.
+  Persistent storage API for the Mobile Flashcards app. Provides convenience
+  functions to store, retrieve, and clear data in AsyncStorage.
 
   Contains API functions for:
   (1) Decks and flashcards

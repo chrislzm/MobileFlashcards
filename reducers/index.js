@@ -1,10 +1,10 @@
 /*
-  Flashcards: reducers/index.js
+  Mobile Flashcards: reducers/index.js
   By Chris Leung
 
   Description:
 
-  Contains the Redux root reducer used in the Flashcards app.
+  Contains the Redux root reducer used in the Mobile Flashcards app.
 */
 
 import {

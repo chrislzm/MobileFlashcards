@@ -1,10 +1,10 @@
 /*
-  Flashcards: utils/colors.js
+  Mobile Flashcards: utils/colors.js
   By Chris Leung
 
   Description:
 
-  Provides color codes used throughout the Flashcards app.
+  Provides color codes used throughout the Mobile Flashcards app.
 */
 
 export const gray = '#757575'

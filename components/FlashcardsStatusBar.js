@@ -1,5 +1,5 @@
 /*
-  Flashcards: components/FlashcardsStatusBar.js
+  Mobile Flashcards: components/FlashcardsStatusBar.js
   By Chris Leung
 
   Description:
