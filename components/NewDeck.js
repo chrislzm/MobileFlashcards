@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = (store) => ({
-  decks: store.decks
+  decks: store
 })
 
 export default connect(mapStateToProps)(NewDeck)

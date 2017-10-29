@@ -81,7 +81,7 @@ function mapStateToProps(state, props) {
   return ({
     title,
     // The deck may not exist yet since it's created asynchronously
-    questions: state.decks[title] ? state.decks[title].questions : []
+    questions: state[title] ? state[title].questions : []
   })
 }
 

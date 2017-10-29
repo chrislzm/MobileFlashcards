@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = (store) => ({
-  decks: convertObjectToArrayWithKey(store.decks)
+  decks: convertObjectToArrayWithKey(store)
 })
 
 export default connect(mapStateToProps)(Decks)
