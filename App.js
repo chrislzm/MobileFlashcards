@@ -14,7 +14,7 @@ import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
 import thunk from 'redux-thunk'
-import { setLocalNotification } from './utils/helpers'
+import { setLocalNotification } from './utils/notification'
 import { IOS_HEADER_BACK } from './utils/styles'
 
 const Tabs = TabNavigator({

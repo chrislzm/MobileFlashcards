@@ -20,11 +20,11 @@
 import React,  { Component } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
-import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
 import QuizQuestion from './QuizQuestion'
 import QuizComplete from './QuizComplete'
 import { CONTAINER } from '../utils/styles'
 import { removeHeaderIfAndroid } from '../utils/helpers'
+import { clearLocalNotification, setLocalNotification } from '../utils/notification'
 import PropTypes from 'prop-types'
 
 class Quiz extends Component {

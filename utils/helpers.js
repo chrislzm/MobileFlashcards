@@ -1,8 +1,16 @@
-import { Alert, AsyncStorage, Platform } from 'react-native'
-import { Notifications, Permissions } from 'expo'
+/*
+  Readable: utils/helpers.js
+  By Chris Leung
 
-const NOTIFICATION_KEY = 'Flashcards:notifications'
+  Description:
 
+  Contains helper functions used throughout the Flashcards app.
+*/
+
+import { Alert, Platform } from 'react-native'
+
+// Used with the Redux store. Coverts the store's key/value props to an array of
+// objects, with the key being stored in a 'key' property in each object.
 export function convertObjectToArrayWithKey(object) {
   return Object.keys(object).map((key) => {
     let arrayObj = object[key]
@@ -11,6 +19,9 @@ export function convertObjectToArrayWithKey(object) {
   })
 }
 
+// Used in a static navigationOptions method in a StackNavigator component. If
+// the platform is Android, removes the header since we don't need the back
+// button.
 export function removeHeaderIfAndroid() {
   if(Platform.OS === 'android')
   return {
@@ -18,6 +29,8 @@ export function removeHeaderIfAndroid() {
   }
 }
 
+// Returns true if a deck name is unique given a set of existing decks. If
+// not unique, displays a UI modal informing the user and returns false.
 export function validateIsUnique(name,decks) {
   const deckNames = Object.keys(decks)
   if(deckNames.includes(name)) {
@@ -27,70 +40,12 @@ export function validateIsUnique(name,decks) {
   return true
 }
 
+// Returns true if data is non-empty. If empty, displays a UI modal informing
+// the user and returns false.
 export function validateTextInput(data,name) {
   if(!data) {
     Alert.alert('Error',`${name} may not be empty`)
     return false
   }
   return true
-}
-
-/*
- * Notification Helper Functions
- * Description: The following three functions manage setting and clearing notifications for the Flashcards app
- * Credit: Source code from UdaciFitness by Tyler McGinnis, with modifications
- * Reference: https://github.com/udacity/reactnd-UdaciFitness-complete/blob/setLocalNotification/utils/helpers.js
- */
-
-export function clearLocalNotification() {
-  return AsyncStorage.removeItem(NOTIFICATION_KEY)
-  .then(Notifications.cancelAllScheduledNotificationsAsync())
-}
-
-function createNotification() {
-  return {
-    title: 'Review your flashcards!',
-    body: "👋 don't forget to take a flashcard quiz today!",
-    ios: {
-      sound: true
-    },
-    android: {
-      sound: true,
-      priority: 'high',
-      sticky: false,
-      vibrate: true
-    }
-  }
-}
-
-export function setLocalNotification() {
-  AsyncStorage.getItem(NOTIFICATION_KEY)
-  .then(JSON.parse)
-  .then((data) => {
-    // If we have NOT already set up a local notification
-    if(data === null) {
-      Permissions.askAsync(Permissions.NOTIFICATIONS)
-      .then(({ status }) => {
-        if(status === 'granted') {
-          // Clear to make sure we don't set two
-          Notifications.cancelAllScheduledNotificationsAsync()
-
-          let tomorrow = new Date()
-          tomorrow.setDate(tomorrow.getDate() + 1)
-          tomorrow.setHours(20)
-          tomorrow.setMinutes(0)
-
-          Notifications.scheduleLocalNotificationAsync(
-            createNotification(),
-            {
-              time: tomorrow,
-              repeat: 'day'
-            }
-          )
-
-          AsyncStorage.setItem(NOTIFICATION_KEY, JSON.stringify(true))
-        }
-      })
-    }
-  })
 }
