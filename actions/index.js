@@ -15,7 +15,7 @@ import * as DecksAPI from '../utils/api'
 
 export const ADD_NEW_DECK = 'ADD_NEW_DECK'
 export const ADD_NEW_QUESTION = 'ADD_NEW_QUESTION'
-export const RESET_DECK_STORE = 'RESET_DECK_STORE'
+export const RESET_DECKS_STORE = 'RESET_DECK_STORE'
 
 /* Thunk Actions */
 
@@ -69,6 +69,6 @@ export function addNewQuestion (title, question) {
 
 export function resetDeckStore () {
   return {
-    type: RESET_DECK_STORE
+    type: RESET_DECKS_STORE
   }
 }
