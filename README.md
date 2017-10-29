@@ -26,6 +26,34 @@ This app has been tested on the following platforms:
 2. iPhone X (iOS 11.0) MacOS simulator
 3. Samsung Galaxy S8 (Android 7.0 API 24) Genymotion simulator
 
+Decks and their title and cards are stored in both AsyncStorage and the Redux store with the following structure:
+```
+{
+  React: {
+    title: 'React',
+    questions: [
+      {
+        question: 'What is React?',
+        answer: 'A library for managing user interfaces'
+      },
+      {
+        question: 'Where do you make Ajax requests in React?',
+        answer: 'The componentDidMount lifecycle event'
+      }
+    ]
+  },
+  JavaScript: {
+    title: 'JavaScript',
+    questions: [
+      {
+        question: 'What is a closure?',
+        answer: 'The combination of a function and the lexical environment within which that function was declared.'
+      }
+    ]
+  }
+}
+```
+
 Known Issues
 ------------
 * Status bar height may be too tall on some iOS devices. This is a style issue that does not affect functionality. For example, when tested on iOS 10.3.3 (device) and iOS 11 (simulator), it added too much extra height on both devices. When setting the status bar height to 0 for iOS 10.3.3, the height is correct, but then it becomes too short on iOS 11. This seems to be an issue with Expo, since the height is set with Expo.Constants.statusBarHeight (see FlashcardsStatusBar component).
