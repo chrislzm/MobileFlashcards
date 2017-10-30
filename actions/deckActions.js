@@ -1,7 +1,16 @@
+/*
+  Mobile Flashcards: actions/deckActions.js
+  By Chris Leung
+
+  Description:
+
+  Deck-related Redux actions used in the Mobile Flashcards app.
+*/
+
 import * as DecksAPI from '../utils/api'
 import { ADD_NEW_DECK, RESET_DECKS_STORE } from './types'
 
-/* Thunk Actions */
+/* Thunk Actions - Used to execute API calls to the persistent data store */
 
 export const fetchDecks = () => dispatch => (
     DecksAPI.getDecks().then((data) => {
