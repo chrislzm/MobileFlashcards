@@ -11,7 +11,7 @@ import {
   ADD_NEW_DECK,
   ADD_NEW_QUESTION,
   RESET_DECKS_STORE
-} from '../actions'
+} from '../actions/types'
 
 const DEFAULT_DECKS_STATE = {}
 
