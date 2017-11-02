@@ -5,6 +5,9 @@
   Description:
 
   Contains the Redux root reducer used in the Mobile Flashcards app.
+
+  As this application grows in the future, deck and card data should be
+  refactored into separate reducers.
 */
 
 import {
