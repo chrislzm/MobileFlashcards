@@ -9,4 +9,4 @@
 
 export const ADD_NEW_DECK = 'ADD_NEW_DECK'
 export const ADD_NEW_QUESTION = 'ADD_NEW_QUESTION'
-export const RESET_DECKS_STORE = 'RESET_DECK_STORE'
+export const REMOVE_ALL_DECKS = 'REMOVE_ALL_DECKS'

@@ -8,7 +8,7 @@
 */
 
 import * as DecksAPI from '../utils/api'
-import { ADD_NEW_DECK, RESET_DECKS_STORE } from './types'
+import { ADD_NEW_DECK, REMOVE_ALL_DECKS } from './types'
 
 /* Thunk Actions - Used to execute API calls to the persistent data store */
 
@@ -48,6 +48,6 @@ export function addNewDeck (title, questions) {
 
 export function resetDeckStore () {
   return {
-    type: RESET_DECKS_STORE
+    type: REMOVE_ALL_DECKS
   }
 }

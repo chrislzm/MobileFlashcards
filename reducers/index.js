@@ -10,7 +10,7 @@
 import {
   ADD_NEW_DECK,
   ADD_NEW_QUESTION,
-  RESET_DECKS_STORE
+  REMOVE_ALL_DECKS
 } from '../actions/types'
 
 const DEFAULT_DECKS_STATE = {}
@@ -34,7 +34,7 @@ function decks (state = DEFAULT_DECKS_STATE, action) {
         ]
       }
     }
-    case RESET_DECKS_STORE:
+    case REMOVE_ALL_DECKS:
     return DEFAULT_DECKS_STATE
     default:
     return state
