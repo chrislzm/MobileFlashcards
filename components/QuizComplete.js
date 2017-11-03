@@ -6,7 +6,8 @@
 
   React Native functional component used in the Quiz component that displays a
   "Quiz Complete" screen with the score and controls to restart the quiz or go
-  back to the deck.
+  back to the deck. Also clears the local notification (which is a reminder
+  to take a quiz) for the current day and sets a reminder for tomorrow
 
   Props:
     navigation: <Object> Required. React Navigation screen navigation prop.
@@ -25,7 +26,6 @@ import PropTypes from 'prop-types'
 class QuizComplete extends Component {
 
   componentDidMount() {
-    // Quiz is complete; clear notifications and set a reminder for tomorrow
     clearLocalNotification()
     .then(setLocalNotification)
   }
