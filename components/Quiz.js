@@ -24,7 +24,6 @@ import QuizQuestion from './QuizQuestion'
 import QuizComplete from './QuizComplete'
 import { CONTAINER } from '../utils/styles'
 import { removeHeaderIfAndroid } from '../utils/helpers'
-import { clearLocalNotification, setLocalNotification } from '../utils/notification'
 import PropTypes from 'prop-types'
 
 class Quiz extends Component {
@@ -50,11 +49,6 @@ class Quiz extends Component {
       questionIndex: prevState.questionIndex+1,
       numCorrect: prevState.numCorrect+points
     }))
-    // If quiz complete, clear notifications and set a reminder for tomorrow
-    if(questionIndex+1 === numQuestions) {
-      clearLocalNotification()
-      .then(setLocalNotification)
-    }
   }
 
   restartQuiz = () => {
