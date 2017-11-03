@@ -63,43 +63,31 @@ class Quiz extends Component {
     const { questionIndex, numCorrect } = this.state
 
     const numQuestions = questions.length
-    const quizComplete = questionIndex === numQuestions
 
-    let questionText, answerText
-    if(!quizComplete) {
-      questionText = questions[questionIndex].question
-      answerText = questions[questionIndex].answer
+    if(questionIndex < numQuestions) {
+      let { question, answer } = questions[questionIndex]
+      return (
+        <QuizQuestion
+           title={title}
+           questionText={question}
+           answerText={answer}
+           questionNum={questionIndex+1}
+           numQuestions={numQuestions}
+           handleCorrect={() => this.handleSubmitAnswer(true,questionIndex,numQuestions)}
+           handleIncorrect={() => this.handleSubmitAnswer(false,questionIndex,numQuestions)}
+        />
+      )
     }
-
     return (
-      <View style={styles.container}>
-        { quizComplete && (
-          <QuizComplete
-            numCorrect={ numCorrect }
-            numQuestions={ numQuestions }
-            restartQuiz={ this.restartQuiz }
-            navigation={ navigation }
-          />
-        )}
-        { !quizComplete && (
-          <QuizQuestion
-             title={title}
-             questionText={questionText}
-             answerText={answerText}
-             questionNum={questionIndex+1}
-             numQuestions={numQuestions}
-             handleCorrect={() => this.handleSubmitAnswer(true,questionIndex,numQuestions)}
-             handleIncorrect={() => this.handleSubmitAnswer(false,questionIndex,numQuestions)}
-          />
-        )}
-      </View>
+      <QuizComplete
+        numCorrect={ numCorrect }
+        numQuestions={ numQuestions }
+        restartQuiz={ this.restartQuiz }
+        navigation={ navigation }
+      />
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: CONTAINER
-})
 
 function mapStateToProps(state, props) {
   const { title }  = props.navigation.state.params
