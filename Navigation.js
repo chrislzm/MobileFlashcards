@@ -1,3 +1,14 @@
+/*
+  Mobile Flashcards: Navigation.js
+  By Chris Leung
+
+  Description:
+
+  Defines the navigation hierarchy and routes for the Mobile Flashcards app.
+  A single TabNavigator is contained within a single StackNavigator to display
+  and route all views.
+*/
+
 import React from 'react';
 import { Platform } from 'react-native'
 import { TabNavigator, StackNavigator } from 'react-navigation'
