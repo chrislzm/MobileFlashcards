@@ -13,10 +13,8 @@
 
 import React from 'react'
 import { View } from 'react-native'
-import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-import reducer from './reducers'
-import thunk from 'redux-thunk'
+import store from './store'
 import FlashcardsStatusBar from './components/FlashcardsStatusBar'
 import MainNavigator from './Navigation'
 import { blue } from './utils/colors'
@@ -30,7 +28,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <Provider store={createStore(reducer, applyMiddleware(thunk))}>
+      <Provider store={store}>
         <View style={{flex: 1}}>
           <FlashcardsStatusBar backgroundColor={blue} barStyle='light-content'/>
           <MainNavigator />
