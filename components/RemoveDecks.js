@@ -12,12 +12,12 @@
 */
 
 import React,  { Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import { removeAllDecks } from '../actions'
 import { Alert } from 'react-native'
 import { white, purple } from '../utils/colors'
-import { CONTAINER, MEDIUM_FONT } from '../utils/styles'
+import { styles } from '../utils/styles'
 import FlashcardsButton from './FlashcardsButton'
 import PropTypes from 'prop-types'
 
@@ -48,10 +48,5 @@ class RemoveDecks extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: CONTAINER,
-  mediumFont: MEDIUM_FONT
-})
 
 export default connect()(RemoveDecks)

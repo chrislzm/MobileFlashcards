@@ -14,13 +14,13 @@
 */
 
 import React,  { Component } from 'react'
-import { View, Text, StyleSheet, Platform } from 'react-native'
+import { View, Text, Platform } from 'react-native'
 import { connect } from 'react-redux'
 import { Alert } from 'react-native'
 import PropTypes from 'prop-types'
 import FlashcardsButton from './FlashcardsButton'
 import { gray } from '../utils/colors'
-import { CONTAINER, MEDIUM_FONT, LARGE_FONT } from '../utils/styles'
+import { styles } from '../utils/styles'
 import { removeHeaderIfAndroid } from '../utils/helpers'
 
 class IndividualDeck extends Component {
@@ -51,7 +51,7 @@ class IndividualDeck extends Component {
         <Text style={styles.largeFont}>
           {title}
         </Text>
-        <Text style={styles.mediumFont}>
+        <Text style={[styles.mediumFont, {color:gray}]}>
           {numCards} Cards
         </Text>
         <FlashcardsButton
@@ -66,15 +66,6 @@ class IndividualDeck extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: CONTAINER,
-  largeFont: LARGE_FONT,
-  mediumFont: {
-    ...MEDIUM_FONT,
-    color: gray
-  }
-})
 
 function mapStateToProps(state, props) {
   const { title }  = props.navigation.state.params

@@ -22,9 +22,9 @@
 */
 
 import React, { Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text } from 'react-native'
 import FlashcardsButton from './FlashcardsButton'
-import { CONTAINER, MEDIUM_FONT, SMALL_FONT } from '../utils/styles'
+import { styles } from '../utils/styles'
 import { red, green, gray } from '../utils/colors'
 import PropTypes from 'prop-types'
 
@@ -88,12 +88,6 @@ export default class QuizQuestion extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: CONTAINER,
-  mediumFont: MEDIUM_FONT,
-  smallFont: SMALL_FONT
-})
 
 QuizQuestion.propTypes = {
   title: PropTypes.string.isRequired,

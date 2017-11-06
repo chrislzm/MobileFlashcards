@@ -15,13 +15,13 @@
 */
 
 import React,  { Component } from 'react'
-import { Text, TextInput, KeyboardAvoidingView, StyleSheet } from 'react-native'
+import { Text, TextInput, KeyboardAvoidingView } from 'react-native'
 import { connect } from 'react-redux'
 import { submitNewDeckTitle } from '../actions'
 import PropTypes from 'prop-types'
 import FlashcardsButton from './FlashcardsButton'
 import { validateTextInput, validateIsUnique } from '../utils/helpers'
-import { CONTAINER, LARGE_FONT, TEXT_INPUT } from '../utils/styles'
+import { styles } from '../utils/styles'
 
 class NewDeck extends Component {
 
@@ -74,12 +74,6 @@ class NewDeck extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: CONTAINER,
-  largeFont: LARGE_FONT,
-  textInput: TEXT_INPUT
-})
 
 const mapStateToProps = (store) => ({
   decks: store

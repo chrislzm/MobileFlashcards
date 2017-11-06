@@ -16,13 +16,13 @@
 */
 
 import React,  { Component } from 'react'
-import { Text, TextInput, KeyboardAvoidingView, Alert, StyleSheet } from 'react-native'
+import { Text, TextInput, KeyboardAvoidingView, Alert } from 'react-native'
 import { connect } from 'react-redux'
 import { submitNewQuestion } from '../actions'
 import PropTypes from 'prop-types'
 import FlashcardsButton from './FlashcardsButton'
 import { validateTextInput, removeHeaderIfAndroid } from '../utils/helpers'
-import { CONTAINER, LARGE_FONT, MEDIUM_FONT, TEXT_INPUT } from '../utils/styles'
+import { styles } from '../utils/styles'
 import { gray } from '../utils/colors'
 
 class NewQuestion extends Component {
@@ -68,7 +68,7 @@ class NewQuestion extends Component {
         <Text style={styles.largeFont}>
           Add a New Card
         </Text>
-        <Text style={styles.mediumFont}>
+        <Text style={[styles.mediumFont, {color:gray}]}>
           Question
         </Text>
         <TextInput
@@ -76,7 +76,7 @@ class NewQuestion extends Component {
           value={question}
           onChangeText={(input) => this.handleTextChange('question',input)}
         />
-        <Text style={styles.mediumFont}>Answer</Text>
+        <Text style={[styles.mediumFont, {color:gray}]}>Answer</Text>
         <TextInput
           style={styles.textInput}
           value={answer}
@@ -90,15 +90,5 @@ class NewQuestion extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: CONTAINER,
-  largeFont: LARGE_FONT,
-  mediumFont: {
-    ...MEDIUM_FONT,
-    color: gray
-  },
-  textInput: TEXT_INPUT
-})
 
 export default connect()(NewQuestion)

@@ -13,14 +13,14 @@
 */
 
 import React,  { Component } from 'react'
-import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, Text, FlatList, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { convertObjectToArrayWithKey } from '../utils/helpers'
 import { fetchDecks } from '../actions'
 import Deck from './Deck'
 import { white } from '../utils/colors'
-import { CONTAINER, MEDIUM_FONT } from '../utils/styles'
+import { styles } from '../utils/styles'
 
 class Decks extends Component {
 
@@ -63,11 +63,6 @@ class Decks extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: CONTAINER,
-  mediumFont: MEDIUM_FONT
-})
 
 const mapStateToProps = (store) => ({
   decks: convertObjectToArrayWithKey(store)

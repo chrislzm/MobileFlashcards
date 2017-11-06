@@ -17,10 +17,10 @@
 */
 
 import React, { Component } from 'react'
-import { View, Text, StyleSheet} from 'react-native'
+import { View, Text } from 'react-native'
 import FlashcardsButton from './FlashcardsButton'
 import { clearLocalNotification, setLocalNotification } from '../utils/notification'
-import { CONTAINER, MEDIUM_FONT, LARGE_FONT } from '../utils/styles'
+import { styles } from '../utils/styles'
 import PropTypes from 'prop-types'
 
 class QuizComplete extends Component {
@@ -56,12 +56,6 @@ class QuizComplete extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: CONTAINER,
-  largeFont: LARGE_FONT,
-  mediumFont: MEDIUM_FONT
-})
 
 QuizComplete.propTypes = {
   navigation: PropTypes.object.isRequired,
