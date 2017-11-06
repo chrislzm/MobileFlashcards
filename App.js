@@ -6,9 +6,7 @@
 
   Renders the Mobile Flashcards app. Uses a TabNavigator contained within a
   StackNavigator to display and route views. Uses a Redux store for convenience
-  so that components can directly access data when needed. Note that the Redux
-  store uses thunk to completely abstract-away persistent data access from the
-  app's React Native components.
+  so that components can directly access shared state when needed.
 */
 
 import React from 'react'
