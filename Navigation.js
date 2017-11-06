@@ -20,7 +20,6 @@ import NewQuestion from './components/NewQuestion'
 import Quiz from './components/Quiz'
 import RemoveDecks from './components/RemoveDecks'
 import { blue, white } from './utils/colors'
-import { IOS_HEADER_BACK } from './utils/styles'
 
 const Tabs = TabNavigator({
   Decks: {
@@ -68,6 +67,15 @@ const Tabs = TabNavigator({
     }
   }
 )
+
+// We hide the back-button header on Android, so this style only applies to iOS
+const IOS_HEADER_BACK = {
+  headerBackTitleStyle: { color: white },
+  headerTintColor: white,
+  headerStyle: {
+      backgroundColor: blue
+  }
+}
 
 export default MainNavigator = StackNavigator({
   Home: {
