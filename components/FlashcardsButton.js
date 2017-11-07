@@ -22,13 +22,7 @@ import { white } from '../utils/colors'
 import { DEFAULT_BUTTON_COLOR } from '../utils/styles'
 
 export default function FlashcardsButton (props) {
-  const { onPress, children } = props
-  let { backgroundColor } = props
-
-    // Set default button color if none was passed in via props
-  if(!backgroundColor) {
-    backgroundColor = DEFAULT_BUTTON_COLOR
-  }
+  const { onPress, children, backgroundColor } = props
 
   return (
     <TouchableOpacity
@@ -54,6 +48,10 @@ const styles = StyleSheet.create({
     color: white
   }
 })
+
+FlashcardsButton.defaultProps = {
+  backgroundColor: DEFAULT_BUTTON_COLOR
+}
 
 FlashcardsButton.propTypes = {
   onPress: PropTypes.func.isRequired,
