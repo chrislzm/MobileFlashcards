@@ -1,26 +1,13 @@
-/*
-  Mobile Flashcards: components/FlashcardsButton.js
-  By Chris Leung
-
-  Description:
-
-  React Native functional component that implements a button used throughtout
-  this app.
-
-  Props:
-    onPress: <Function> Required. Callback function for the onPress event.
-    children: <String> Required. Contains the text wrapped by this component
-      that will be used as the button text.
-    backgroundColor: <String> Optional. We can pass a different color for the
-      button besides its default.
-*/
-
 import React from 'react'
 import { Text, TouchableOpacity, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
 import { white } from '../utils/colors'
 import { DEFAULT_BUTTON_COLOR } from '../utils/styles'
 
+/**
+ * Implements a button used throughtout this app.
+ * @author Chris Leung
+ */
 export default function FlashcardsButton (props) {
   const { onPress, children, backgroundColor } = props
 
@@ -33,6 +20,25 @@ export default function FlashcardsButton (props) {
       </Text>
     </TouchableOpacity>
   )
+}
+
+FlashcardsButton.defaultProps = {
+  backgroundColor: DEFAULT_BUTTON_COLOR
+}
+
+FlashcardsButton.propTypes = {
+  /**
+   * Callback function for the onPress event.
+   */
+  onPress: PropTypes.func.isRequired,
+  /**
+   * The text wrapped by this component that will be used as the button text.
+   */
+  children: PropTypes.string.isRequired,
+  /**
+   * Button color. If not provided, default color will be used.
+   */
+  backgroundColor: PropTypes.string
 }
 
 const styles = StyleSheet.create({
@@ -48,13 +54,3 @@ const styles = StyleSheet.create({
     color: white
   }
 })
-
-FlashcardsButton.defaultProps = {
-  backgroundColor: DEFAULT_BUTTON_COLOR
-}
-
-FlashcardsButton.propTypes = {
-  onPress: PropTypes.func.isRequired,
-  children: PropTypes.string.isRequired,
-  backgroundColor: PropTypes.string
-}
