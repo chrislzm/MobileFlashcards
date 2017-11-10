@@ -1,17 +1,3 @@
-/*
-  Mobile Flashcards: components/Decks.js
-  By Chris Leung
-
-  Description:
-
-  React Native component that displays a list of decks.
-
-  Props:
-    navigation: <Object> Required. React Navigation screen navigation prop.
-    decks: <Array> Required. An array of deck objects. Refer to README.md for
-      the structure of these objects.
-*/
-
 import React,  { Component } from 'react'
 import { View, Text, FlatList, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
@@ -22,10 +8,21 @@ import Deck from './Deck'
 import { white } from '../utils/colors'
 import { styles } from '../utils/styles'
 
+/**
+ * Displays a list of decks.
+ * @author Chris Leung
+ */
 class Decks extends Component {
 
   static propTypes = {
+    /**
+     * React Navigation screen navigation prop.
+     */
     navigation: PropTypes.object.isRequired,
+    /**
+     * An array of deck objects. Refer to README.md for the structure of these
+     * objects.
+     */
     decks: PropTypes.array.isRequired
   }
 
