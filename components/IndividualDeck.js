@@ -1,18 +1,3 @@
-/*
-  Mobile Flashcards: components/IndividualDeck.js
-  By Chris Leung
-
-  Description:
-
-  React Native component that displays details of an individual deck along with
-  options to add new cards and start a quiz.
-
-  Props:
-    navigation: <Object> Required. React Navigation screen navigation prop.
-    title: <String> Required. The deck title.
-    questions: <Array> Required. The array of question objects for this deck.
-*/
-
 import React,  { Component } from 'react'
 import { View, Text, Platform } from 'react-native'
 import { connect } from 'react-redux'
@@ -23,11 +8,25 @@ import { gray } from '../utils/colors'
 import { styles } from '../utils/styles'
 import { removeHeaderIfAndroid } from '../utils/helpers'
 
+/**
+ * Displays an individual deck's details along with controls to add new cards
+ * to and start a quiz on the deck.
+ * @author Chris Leung
+ */
 class IndividualDeck extends Component {
 
   static propTypes = {
+    /**
+     * The deck title.
+     */
     title: PropTypes.string.isRequired,
+    /**
+     * The array of question objects for this deck.
+     */
     questions: PropTypes.array.isRequired,
+    /**
+     * React Navigation screen navigation prop.
+     */
     navigation: PropTypes.object.isRequired
   }
 
