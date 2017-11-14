@@ -1,20 +1,3 @@
-/*
-  Mobile Flashcards: components/NewDeck.js
-  By Chris Leung
-
-  Description:
-
-  React Native component that allows user to create a new deck. Accomplishes
-  this by displaying a form, validating input and routing to the individual deck
-  view after the deck creation action has been dispatched to the Redux store.
-
-  Props:
-    navigation: <Object> Required. React Navigation screen navigation prop.
-    title: <String> Required. Passed via navigation.state.params. Contains the
-      title of the deck we are adding a new card to.
-    dispatch: <Function> Required. Dispatch function from the Redux store.
-*/
-
 import React,  { Component } from 'react'
 import { Text, TextInput, KeyboardAvoidingView, Alert } from 'react-native'
 import { connect } from 'react-redux'
@@ -25,10 +8,16 @@ import { validateTextInput, removeHeaderIfAndroid } from '../utils/helpers'
 import { styles } from '../utils/styles'
 import { gray } from '../utils/colors'
 
+/**
+ * Allows user to create a new card (question+answer pair) in a deck
+ * @author Chris Leung
+ */
 class NewQuestion extends Component {
 
   static propTypes = {
+    /** Redux dispatch function. */
     dispatch: PropTypes.func.isRequired,
+    /** React Navigation screen navigation prop */
     navigation: PropTypes.object.isRequired,
   }
 
