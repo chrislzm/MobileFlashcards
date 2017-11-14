@@ -39,9 +39,9 @@ class NewQuestion extends Component {
   handleSubmit = () => {
     const { question, answer } = this.state
     if(validateTextInput(question,'\"Question\"') && validateTextInput(answer,'\"Answer\"')) {
-      const { title } = this.props.navigation.state.params
+      const { deckTitle } = this.props.navigation.state.params
       const questionObject = { question, answer }
-      this.props.dispatch(submitNewQuestion(title,questionObject))
+      this.props.dispatch(submitNewQuestion(deckTitle,questionObject))
       this.setState({ question: '', answer: ''})
       Alert.alert('Success!','Your card has been added.')
     }
