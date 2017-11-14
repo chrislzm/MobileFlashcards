@@ -16,17 +16,11 @@ import { removeHeaderIfAndroid } from '../utils/helpers'
 class IndividualDeck extends Component {
 
   static propTypes = {
-    /**
-     * The deck title.
-     */
+    /** Deck title */
     title: PropTypes.string.isRequired,
-    /**
-     * The array of question objects for this deck.
-     */
+    /** Array of question objects for this deck */
     questions: PropTypes.array.isRequired,
-    /**
-     * React Navigation screen navigation prop.
-     */
+    /** React Navigation screen navigation prop */
     navigation: PropTypes.object.isRequired
   }
 

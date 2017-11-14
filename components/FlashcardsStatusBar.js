@@ -20,8 +20,6 @@ export default function FlashcardsStatusBar ({ backgroundColor, ...props}) {
  * List of props: https://facebook.github.io/react-native/docs/statusbar.html
  */
 FlashcardsStatusBar.propTypes = {
-  /**
-   *  The color of the status bar on Android.
-   */
+  /** Color of the status bar on Android */
   backgroundColor: PropTypes.string.isRequired
 }

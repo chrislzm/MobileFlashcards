@@ -14,11 +14,11 @@ import { styles } from '../utils/styles'
 class NewDeck extends Component {
 
   static propTypes = {
-    /** Dispatch function from the Redux store. */
+    /** Dispatch function from the Redux store */
     dispatch: PropTypes.func.isRequired,
-    /** React Navigation screen navigation prop. */
+    /** React Navigation screen navigation prop */
     navigation: PropTypes.object.isRequired,
-    /** The decks object from the Redux store. */
+    /** Decks state object from the Redux store */
     decks: PropTypes.object.isRequired
   }
 

@@ -26,17 +26,11 @@ export default function Deck (props) {
 }
 
 Deck.propTypes = {
-  /**
-   * React Navigation screen navigation prop.
-   */
+  /** React Navigation screen navigation prop */
   navigation: PropTypes.object.isRequired,
-  /**
-   * The title of the deck
-   */
+  /** Title of the deck */
   title: PropTypes.string.isRequired,
-  /**
-   * The number of cards in the deck.
-   */
+  /** Number of cards in the deck. */
   numCards: PropTypes.number.isRequired
 }
 

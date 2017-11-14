@@ -15,14 +15,9 @@ import { styles } from '../utils/styles'
 class Decks extends Component {
 
   static propTypes = {
-    /**
-     * React Navigation screen navigation prop.
-     */
+    /** React Navigation screen navigation prop  */
     navigation: PropTypes.object.isRequired,
-    /**
-     * An array of deck objects. Refer to README.md for the structure of these
-     * objects.
-     */
+    /** Array of deck objects. See README.md for deck object structure. */
     decks: PropTypes.array.isRequired
   }
 

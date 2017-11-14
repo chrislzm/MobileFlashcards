@@ -27,17 +27,11 @@ FlashcardsButton.defaultProps = {
 }
 
 FlashcardsButton.propTypes = {
-  /**
-   * Callback function for the onPress event.
-   */
+  /** Callback function for the onPress event */
   onPress: PropTypes.func.isRequired,
-  /**
-   * The text wrapped by this component that will be used as the button text.
-   */
+  /** Text wrapped by this component, used as the button text */
   children: PropTypes.string.isRequired,
-  /**
-   * Button color. If not provided, default color will be used.
-   */
+  /** Button color. If none is provided, default color is used. */
   backgroundColor: PropTypes.string
 }
 
