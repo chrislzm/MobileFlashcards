@@ -1,20 +1,3 @@
-/*
-  Mobile Flashcards: components/Quiz.js
-  By Chris Leung
-
-  Description:
-
-  React Native component that launches and runs a quiz for a given deck of
-  flashcards. Uses QuizQuestion component to display the questions, and
-  QuizComplete component to display the result once the quiz is complete.
-
-  Props:
-    navigation: <Object> Required. React Navigation screen navigation prop.
-    title: <String> Required. Passed via navigation.state.params. Contains the
-      title of the deck we are adding a new card to.
-    questions: <Array> Required. The array of question objects for this deck.
-*/
-
 import React,  { Component } from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
@@ -23,11 +6,18 @@ import QuizComplete from './QuizComplete'
 import { removeHeaderIfAndroid } from '../utils/helpers'
 import PropTypes from 'prop-types'
 
+/**
+ * Launches and runs a quiz for a given deck of flashcards.
+ * @author Chris Leung
+ */
 class Quiz extends Component {
 
   static propTypes = {
+    /** Title of the deck we are adding a new card to */
     title: PropTypes.string.isRequired,
+    /** React Navigation screen navigation prop */
     navigation: PropTypes.object.isRequired,
+    /** Array of question objects for this deck */
     questions: PropTypes.array.isRequired
   }
 
