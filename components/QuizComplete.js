@@ -1,21 +1,3 @@
-/*
-  Mobile Flashcards: components/QuizComplete.js
-  By Chris Leung
-
-  Description:
-
-  React Native functional component used in the Quiz component that displays a
-  "Quiz Complete" screen with the score and controls to restart the quiz or go
-  back to the deck. Also clears the local notification (which is a reminder
-  to take a quiz) for the current day and sets a reminder for tomorrow
-
-  Props:
-    navigation: <Object> Required. React Navigation screen navigation prop.
-    restartQuiz: <Function> Required. Callback that will relaunch the quiz.
-    numCorrect: <Integer> Required. The number rof questions answered correctly.
-    numQuestions: <Integer> Required. The number of questions in the deck/quiz.
-*/
-
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 import FlashcardsButton from './FlashcardsButton'
@@ -23,6 +5,11 @@ import { clearLocalNotification, setLocalNotification } from '../utils/notificat
 import { styles } from '../utils/styles'
 import PropTypes from 'prop-types'
 
+/**
+ * "Quiz Complete" screen with controls to restart quiz or go back to the deck.
+ * Clears notifications (reminder to take a quiz) and sets new one for tomorrow.
+ * @author Chris Leung
+ */
 class QuizComplete extends Component {
 
   componentDidMount() {
@@ -58,9 +45,13 @@ class QuizComplete extends Component {
 }
 
 QuizComplete.propTypes = {
+  /** React Navigation screen navigation prop */
   navigation: PropTypes.object.isRequired,
+  /** Callback that will relaunch the quiz */
   restartQuiz: PropTypes.func.isRequired,
+  /** Number of questions answered correctly */
   numCorrect: PropTypes.number.isRequired,
+  /** Total number of questions in the deck */
   numQuestions: PropTypes.number.isRequired
 }
 
