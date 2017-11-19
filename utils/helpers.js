@@ -1,10 +1,6 @@
-/*
-  Mobile Flashcards: utils/helpers.js
-  By Chris Leung
-
-  Description:
-
-  Contains helper functions used throughout the Mobile Flashcards app.
+/**
+ * @fileOverview Helper functions used throughout the Mobile Flashcards app
+ * @author Chris Leung
 */
 
 import { Alert, Platform } from 'react-native'
@@ -19,9 +15,11 @@ export function convertObjectToArrayWithKey(object) {
   })
 }
 
-// Used in a static navigationOptions method in a StackNavigator component. If
-// the platform is Android, removes the header since we don't need the back
-// button.
+/**
+ * Used in a static navigationOptions method in a StackNavigator component.
+ * Removes the header in Android since we don't need the back button.
+ * @return {Object} header: null
+ */
 export function removeHeaderIfAndroid() {
   if(Platform.OS === 'android')
   return {
