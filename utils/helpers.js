@@ -5,8 +5,12 @@
 
 import { Alert, Platform } from 'react-native'
 
-// Used with the Redux store. Coverts the store's key/value props to an array of
-// objects, with the key being stored in a 'key' property in each object.
+/**
+ * Extracts values from an object and creates an array of objects containing
+ * those values. Also sets a 'key' property for React render convenience.
+ * @param  {object} object
+ * @return {array}
+ */
 export function convertObjectToArrayWithKey(object) {
   return Object.keys(object).map((key) => {
     let arrayObj = object[key]
