@@ -7,7 +7,7 @@ import { Alert, Platform } from 'react-native'
 
 /**
  * Extracts values from an object and creates an array of objects containing
- * those values. Also sets a 'key' property for React render convenience.
+ * those values. Assigns the key to a 'key' property on the object.
  * @param  {object} object
  * @return {array}
  */
