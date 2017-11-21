@@ -22,7 +22,7 @@ export function convertObjectToArrayWithKey(object) {
 /**
  * Used in a static navigationOptions method in a StackNavigator component.
  * Removes the header in Android since we don't need the back button.
- * @return {Object} header: null
+ * @return {object} header: null
  */
 export function removeHeaderIfAndroid() {
   if(Platform.OS === 'android')
@@ -30,9 +30,12 @@ export function removeHeaderIfAndroid() {
     header: null
   }
 }
-
-// Returns true if a deck name is unique given a set of existing decks. If
-// not unique, displays a UI modal informing the user and returns false.
+/**
+ * Checks if deck name is unique. Displays a modal when false.
+ * @param  {string} name  Deck name
+ * @param  {object} decks Object containing decks as title:data properties
+ * @return {boolean}      True when unique, false otherwise
+ */
 export function validateIsUnique(name,decks) {
   const deckNames = Object.keys(decks)
   if(deckNames.includes(name)) {
