@@ -45,11 +45,16 @@ export function validateIsUnique(name,decks) {
   return true
 }
 
-// Returns true if data is non-empty. If empty, displays a UI modal informing
-// the user and returns false.
-export function validateTextInput(data,name) {
+/**
+ * Checks if data is falsey (e.g. undefined or empty). When falsey, displays a
+ * modal informing the user.
+ * @param  {String} data Data to check
+ * @param  {String} inputFieldName
+ * @return {Boolean} True if data is non-empty, false otherwise.
+ */
+export function validateTextInput(data,inputFieldName) {
   if(!data) {
-    Alert.alert('Error',`${name} may not be empty`)
+    Alert.alert('Error',`${inputFieldName} may not be empty`)
     return false
   }
   return true
