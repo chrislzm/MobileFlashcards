@@ -8,8 +8,8 @@ import { Alert, Platform } from 'react-native'
 /**
  * Extracts values from an object's key:value pairs and puts them in an array.
  * Assigns the key to a 'key' property on the value object.
- * @param  {object} object
- * @return {array}
+ * @param  {Object} object
+ * @return {Array}
  */
 export function convertObjectToArrayWithKey(object) {
   return Object.keys(object).map((key) => {
@@ -22,7 +22,7 @@ export function convertObjectToArrayWithKey(object) {
 /**
  * Used in a static navigationOptions method in a StackNavigator component.
  * Removes the header in Android since we don't need the back button.
- * @return {object} header: null
+ * @return {Object} header: null
  */
 export function removeHeaderIfAndroid() {
   if(Platform.OS === 'android')
@@ -32,9 +32,9 @@ export function removeHeaderIfAndroid() {
 }
 /**
  * Checks if deck name is unique. Displays a modal when false.
- * @param  {string} name  Deck name
- * @param  {object} decks Object containing decks as title:data properties
- * @return {boolean}      True when unique, false otherwise
+ * @param  {String} name  Deck name
+ * @param  {Object} decks Object containing decks as title:data properties
+ * @return {Boolean}      True when unique, false otherwise
  */
 export function validateIsUnique(name,decks) {
   const deckNames = Object.keys(decks)
