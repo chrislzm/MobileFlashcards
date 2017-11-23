@@ -1,15 +1,6 @@
-/*
-  Mobile Flashcards: utils/api.js
-  By Chris Leung
-
-  Description:
-
-  Persistent storage API for the Mobile Flashcards app. Provides convenience
-  functions to store, retrieve, and clear data in AsyncStorage.
-
-  Contains API functions for:
-  (1) Decks and flashcards
-  (2) Notifications
+/**
+ * @fileOverview AsyncStorage persistent store API for the Mobile Flashcards app
+ * @author Chris Leung
 */
 
 import { AsyncStorage } from 'react-native'
@@ -17,7 +8,7 @@ import { AsyncStorage } from 'react-native'
 const DECKS_STORAGE_KEY = "Flashcards:decks"
 const NOTIFICATION_STORAGE_KEY = 'Flashcards:notifications'
 
-// (1) API functions for decks and flashcards
+/* Deck and flashcard functions */
 
 export const addCardToDeck = (title,question) => (
   getDecks().then((data) => {
@@ -46,7 +37,7 @@ export const saveDeckTitle = (title) => (
   }))
 )
 
-// (2) API functions for notifications
+/* Notifications functions */
 
 export const clearNotification = () => (
   AsyncStorage.removeItem(NOTIFICATION_STORAGE_KEY)
