@@ -10,6 +10,12 @@ const NOTIFICATION_STORAGE_KEY = 'Flashcards:notifications'
 
 /* Deck and flashcard functions */
 
+/**
+ * Adds a new card to an existing deck and saves to AsyncStorage
+ * @param {String} title    Title of deck to add card to
+ * @param {Object} question Contains question:String answer:String properties
+ * @return {Promise}
+ */
 export const addCardToDeck = (title,question) => (
   getDecks().then((data) => {
     const decks = JSON.parse(data)
