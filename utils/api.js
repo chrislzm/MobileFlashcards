@@ -30,9 +30,14 @@ export const addCardToDeck = (title,card) => (
   })
 )
 
+/**
+ * Clears all deck and card data
+ * @return {Promise}
+ */
 export const clearData = () => (
   AsyncStorage.removeItem(DECKS_STORAGE_KEY)
 )
+
 export const getDecks = () => (
   AsyncStorage.getItem(DECKS_STORAGE_KEY)
 )
