@@ -46,6 +46,11 @@ export const getDecks = () => (
   AsyncStorage.getItem(DECKS_STORAGE_KEY)
 )
 
+/**
+ * Save new (empty) deck
+ * @param  {[type]} title Deck title
+ * @return {Promise}
+ */
 export const saveDeckTitle = (title) => (
   AsyncStorage.mergeItem(DECKS_STORAGE_KEY,JSON.stringify({
     [title]: { title, questions: [] }
