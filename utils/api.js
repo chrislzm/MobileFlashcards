@@ -59,6 +59,10 @@ export const saveDeckTitle = (title) => (
 
 /* Notifications functions */
 
+/**
+ * Clears notification data (but not actual notification in OS)
+ * @return {Promise}
+ */
 export const clearNotification = () => (
   AsyncStorage.removeItem(NOTIFICATION_STORAGE_KEY)
 )
