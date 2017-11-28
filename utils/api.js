@@ -40,7 +40,7 @@ export const clearData = () => (
 
 /**
  * Gets deck (and card) data
- * @return {Promise}  Contains stringifyed JSON string
+ * @return {Promise}  Contains stringifyed JSON
  */
 export const getDecks = () => (
   AsyncStorage.getItem(DECKS_STORAGE_KEY)
@@ -67,6 +67,10 @@ export const clearNotification = () => (
   AsyncStorage.removeItem(NOTIFICATION_STORAGE_KEY)
 )
 
+/**
+ * Gets notification data
+ * @return {Promise} Contains stringifyed JSON
+ */
 export const getNotification = () => (
   AsyncStorage.getItem(NOTIFICATION_STORAGE_KEY)
 )
