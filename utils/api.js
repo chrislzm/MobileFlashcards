@@ -57,10 +57,10 @@ export const saveDeckTitle = (title) => (
   }))
 )
 
-/* Notifications functions */
+/* Notifications functions: We store 'true' when OS notification has been set */
 
 /**
- * Clears notification data (but not actual notification in OS)
+ * Clears set notification (but not actual notification in the OS)
  * @return {Promise}
  */
 export const clearNotification = () => (
@@ -68,13 +68,17 @@ export const clearNotification = () => (
 )
 
 /**
- * Gets notification data
+ * Gets notification set status
  * @return {Promise} Contains stringifyed JSON
  */
 export const getNotification = () => (
   AsyncStorage.getItem(NOTIFICATION_STORAGE_KEY)
 )
 
+/**
+ * Sets notification status
+ * @return {Promise}
+ */
 export const setNotification = () => (
   AsyncStorage.setItem(NOTIFICATION_STORAGE_KEY, JSON.stringify(true))
 )
