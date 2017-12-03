@@ -6,7 +6,7 @@ import { red, green, gray } from '../utils/colors'
 import PropTypes from 'prop-types'
 
 /**
- * Displays a quiz question and controls to:
+ * Displays a card and controls to:
  * (1) toggle between showing the question and the answer
  * (2) submit a "correct" answer
  * (3) submit an "incorrect" answer
