@@ -28,7 +28,8 @@ export default class QuizQuestion extends Component {
   }
 
   render() {
-    const { deckName, questionText, answerText, cardNum, numCards, handleCorrect, handleIncorrect } = this.props
+    const { deckName, card, cardNum, numCards, handleCorrect, handleIncorrect } = this.props
+    const { questionText, answerText } = card
     const { showAnswer } = this.state
 
     let textContent, toggleFlashcardsButtonText
@@ -76,10 +77,8 @@ export default class QuizQuestion extends Component {
 QuizQuestion.propTypes = {
   /** Title of the deck the user is being quizzed on */
   deckName: PropTypes.string.isRequired,
-  /** Card question */
-  questionText: PropTypes.string.isRequired,
-  /** Card answer */
-  answerText: PropTypes.string.isRequired,
+  /** Card to quiz */
+  card: PropTypes.object.isRequired,
   /** Question number */
   cardNum: PropTypes.number.isRequired,
   /** Total number of cards */

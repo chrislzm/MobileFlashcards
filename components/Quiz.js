@@ -52,12 +52,10 @@ class Quiz extends Component {
     const numCards = cards.length
 
     if(cardIndex < numCards) {
-      let { questionText, answerText } = cards[cardIndex]
       return (
         <QuizQuestion
            deckName={deckName}
-           questionText={questionText}
-           answerText={answerText}
+           card={cards[cardIndex]}
            cardNum={cardIndex+1}
            numCards={numCards}
            handleCorrect={() => this.handleSubmitAnswer(true,cardIndex,numCards)}
