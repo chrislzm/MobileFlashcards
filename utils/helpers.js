@@ -32,14 +32,14 @@ export function removeHeaderIfAndroid() {
 }
 /**
  * Checks if deck name is unique. Displays a modal when false.
- * @param  {String} name  Deck name
+ * @param  {String} deckName  Deck name
  * @param  {Object} decks Object containing decks as title:data properties
  * @return {Boolean}      True when unique, false otherwise
  */
-export function validateIsUnique(deckTitle,decks) {
-  const deckTitles = Object.keys(decks)
-  if(deckTitles.includes(deckTitle)) {
-    Alert.alert(`\"${deckTitle}\" already exists`, "Please choose a different name")
+export function validateIsUnique(deckName,decks) {
+  const deckNames = Object.keys(decks)
+  if(deckNames.includes(deckName)) {
+    Alert.alert(`\"${deckName}\" already exists`, "Please choose a different name")
     return false
   }
   return true
