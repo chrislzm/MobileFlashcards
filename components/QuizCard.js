@@ -79,7 +79,7 @@ QuizCard.propTypes = {
   deckName: PropTypes.string.isRequired,
   /** Card to quiz */
   card: PropTypes.object.isRequired,
-  /** Question number */
+  /** Card number */
   cardNum: PropTypes.number.isRequired,
   /** Total number of cards */
   numCards: PropTypes.number.isRequired,
