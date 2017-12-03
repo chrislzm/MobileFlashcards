@@ -13,7 +13,7 @@ const NOTIFICATION_STORAGE_KEY = 'Flashcards:notifications'
 /**
  * Adds a new card to an existing deck and saves to AsyncStorage
  * @param {String} deckName  Title of deck to add card to
- * @param {Object} card   Contains question:String answer:String properties
+ * @param {Object} card   Contains questionText and answerText properties
  * @return {Promise}
  */
 export const addCardToDeck = (deckName,card) => (
