@@ -1,10 +1,6 @@
-/*
-  Mobile Flashcards: actions/deckActions.js
-  By Chris Leung
-
-  Description:
-
-  Deck-related Redux actions used in the Mobile Flashcards app.
+/**
+ * @fileOverview Deck-related Redux actions used in the Mobile Flashcards app
+ * @author Chris Leung
 */
 
 import * as DecksAPI from '../utils/api'
