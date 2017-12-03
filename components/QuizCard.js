@@ -12,7 +12,7 @@ import PropTypes from 'prop-types'
  * (3) submit an "incorrect" answer
  * @author Chris Leung
  */
-export default class QuizQuestion extends Component {
+export default class QuizCard extends Component {
 
   state = {
     showAnswer: false
@@ -74,7 +74,7 @@ export default class QuizQuestion extends Component {
   }
 }
 
-QuizQuestion.propTypes = {
+QuizCard.propTypes = {
   /** Title of the deck the user is being quizzed on */
   deckName: PropTypes.string.isRequired,
   /** Card to quiz */

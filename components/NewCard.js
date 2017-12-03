@@ -12,7 +12,7 @@ import { gray } from '../utils/colors'
  * Allows user to create a new card (question+answer pair) in a deck
  * @author Chris Leung
  */
-class NewQuestion extends Component {
+class NewCard extends Component {
 
   static propTypes = {
     /** Redux dispatch function. */
@@ -80,4 +80,4 @@ class NewQuestion extends Component {
   }
 }
 
-export default connect()(NewQuestion)
+export default connect()(NewCard)

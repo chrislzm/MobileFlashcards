@@ -1,7 +1,7 @@
 import React,  { Component } from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
-import QuizQuestion from './QuizQuestion'
+import QuizCard from './QuizCard'
 import QuizComplete from './QuizComplete'
 import { removeHeaderIfAndroid } from '../utils/helpers'
 import PropTypes from 'prop-types'
@@ -53,7 +53,7 @@ class Quiz extends Component {
 
     if(cardIndex < numCards) {
       return (
-        <QuizQuestion
+        <QuizCard
            deckName={deckName}
            card={cards[cardIndex]}
            cardNum={cardIndex+1}

@@ -16,7 +16,7 @@ import { Foundation, Entypo, MaterialIcons } from '@expo/vector-icons'
 import Decks from './components/Decks'
 import IndividualDeck from './components/IndividualDeck'
 import NewDeck from './components/NewDeck'
-import NewQuestion from './components/NewQuestion'
+import NewCard from './components/NewCard'
 import Quiz from './components/Quiz'
 import RemoveDecks from './components/RemoveDecks'
 import { blue, white } from './utils/colors'
@@ -91,8 +91,8 @@ export default MainNavigator = StackNavigator({
       headerBackTitle: 'Back to Deck'
     }
   },
-  NewQuestion: {
-    screen: NewQuestion,
+  NewCard: {
+    screen: NewCard,
     navigationOptions: {
       ...IOS_HEADER_BACK
     }

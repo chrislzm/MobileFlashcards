@@ -48,7 +48,7 @@ class IndividualDeck extends Component {
           {numCards} Cards
         </Text>
         <FlashcardsButton
-          onPress={() => navigation.navigate('NewQuestion', { deckName })}>
+          onPress={() => navigation.navigate('NewCard', { deckName })}>
           Add Card
         </FlashcardsButton>
         <FlashcardsButton
