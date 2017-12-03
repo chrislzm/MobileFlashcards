@@ -17,8 +17,8 @@ export const fetchDecks = () => dispatch => (
       if(data) {
         const decks = JSON.parse(data)
         Object.keys(decks).forEach(key => {
-          const { title, questions } = decks[key]
-          dispatch(addNewDeck(title,questions))
+          const { deckName, cards } = decks[key]
+          dispatch(addNewDeck(deckName,cards))
         })
       }
     })
@@ -30,19 +30,19 @@ export const removeAllDecks = () => dispatch => (
   })
 )
 
-export const submitNewDeckTitle = (title) => dispatch => (
-  DecksAPI.saveDeckTitle(title).then(() => {
-    dispatch(addNewDeck(title,[]))
+export const submitNewDeckName = (deckName) => dispatch => (
+  DecksAPI.saveDeckName(deckName).then(() => {
+    dispatch(addNewDeck(deckName,[]))
   })
 )
 
 /* Redux Actions */
 
-export function addNewDeck (title, questions) {
+export function addNewDeck (deckName, cards) {
   return {
     type: ADD_NEW_DECK,
-    title,
-    questions
+    deckName,
+    cards
   }
 }
 

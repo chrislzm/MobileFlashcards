@@ -14,11 +14,11 @@ class Quiz extends Component {
 
   static propTypes = {
     /** Title of the deck we are adding a new card to */
-    title: PropTypes.string.isRequired,
+    deckName: PropTypes.string.isRequired,
     /** React Navigation screen navigation prop */
     navigation: PropTypes.object.isRequired,
-    /** Array of question objects for this deck */
-    questions: PropTypes.array.isRequired
+    /** Array of card objects for this deck */
+    cards: PropTypes.array.isRequired
   }
 
   static navigationOptions = ({navigation}) => (
@@ -26,49 +26,49 @@ class Quiz extends Component {
   )
 
   state = {
-    questionIndex: 0,
+    cardIndex: 0,
     numCorrect: 0
   }
 
-  handleSubmitAnswer = (isCorrect,questionIndex,numQuestions) => {
+  handleSubmitAnswer = (isCorrect,cardIndex,numCards) => {
     let points = isCorrect ? 1 : 0
     this.setState((prevState) => ({
-      questionIndex: prevState.questionIndex+1,
+      cardIndex: prevState.cardIndex+1,
       numCorrect: prevState.numCorrect+points
     }))
   }
 
   restartQuiz = () => {
     this.setState({
-      questionIndex: 0,
+      cardIndex: 0,
       numCorrect: 0
     })
   }
 
   render() {
-    const { title, questions, navigation } = this.props
-    const { questionIndex, numCorrect } = this.state
+    const { deckName, cards, navigation } = this.props
+    const { cardIndex, numCorrect } = this.state
 
-    const numQuestions = questions.length
+    const numCards = cards.length
 
-    if(questionIndex < numQuestions) {
-      let { question, answer } = questions[questionIndex]
+    if(cardIndex < numCards) {
+      let { questionText, answerText } = cards[cardIndex]
       return (
         <QuizQuestion
-           title={title}
-           questionText={question}
-           answerText={answer}
-           questionNum={questionIndex+1}
-           numQuestions={numQuestions}
-           handleCorrect={() => this.handleSubmitAnswer(true,questionIndex,numQuestions)}
-           handleIncorrect={() => this.handleSubmitAnswer(false,questionIndex,numQuestions)}
+           deckName={deckName}
+           questionText={questionText}
+           answerText={answerText}
+           cardNum={cardIndex+1}
+           numCards={numCards}
+           handleCorrect={() => this.handleSubmitAnswer(true,cardIndex,numCards)}
+           handleIncorrect={() => this.handleSubmitAnswer(false,cardIndex,numCards)}
         />
       )
     }
     return (
       <QuizComplete
         numCorrect={ numCorrect }
-        numQuestions={ numQuestions }
+        numCards={ numCards }
         restartQuiz={ this.restartQuiz }
         navigation={ navigation }
       />
@@ -77,10 +77,10 @@ class Quiz extends Component {
 }
 
 function mapStateToProps(state, props) {
-  const { title }  = props.navigation.state.params
+  const { deckName }  = props.navigation.state.params
   return ({
-    title,
-    questions: state[title].questions
+    deckName,
+    cards: state[deckName].cards
   })
 }
 export default connect(mapStateToProps)(Quiz)

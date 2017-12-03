@@ -9,14 +9,14 @@ import { gray } from '../utils/colors'
  * @author Chris Leung
  */
 export default function Deck (props) {
-  const { navigation, title, numCards } = props
+  const { navigation, deckName, numCards } = props
   return (
     <TouchableOpacity
-      key={title}
+      key={deckName}
       style={styles.deck}
-      onPress={() => navigation.navigate('IndividualDeck',{ title })}>
-      <Text style={styles.title}>
-        {title}
+      onPress={() => navigation.navigate('IndividualDeck',{ deckName })}>
+      <Text style={styles.deckName}>
+        {deckName}
       </Text>
       <Text style={styles.cards}>
         {numCards} cards
@@ -29,7 +29,7 @@ Deck.propTypes = {
   /** React Navigation screen navigation prop */
   navigation: PropTypes.object.isRequired,
   /** Title of the deck */
-  title: PropTypes.string.isRequired,
+  deckName: PropTypes.string.isRequired,
   /** Number of cards in the deck. */
   numCards: PropTypes.number.isRequired
 }
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     marginBottom:5,
     padding:20
   },
-  title: {
+  deckName: {
     fontSize:20,
     fontWeight:'bold',
     paddingBottom:10

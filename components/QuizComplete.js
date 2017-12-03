@@ -18,8 +18,8 @@ class QuizComplete extends Component {
   }
 
   render() {
-    const { navigation, restartQuiz, numCorrect, numQuestions } = this.props
-    const score = Math.round(numCorrect*100.0/numQuestions)
+    const { navigation, restartQuiz, numCorrect, numCards } = this.props
+    const score = Math.round(numCorrect*100.0/numCards)
     return (
       <View style={styles.container}>
         <Text style={styles.largeFont}>
@@ -49,10 +49,10 @@ QuizComplete.propTypes = {
   navigation: PropTypes.object.isRequired,
   /** Callback that will relaunch the quiz */
   restartQuiz: PropTypes.func.isRequired,
-  /** Number of questions answered correctly */
+  /** Number of cards answered correctly */
   numCorrect: PropTypes.number.isRequired,
-  /** Total number of questions in the deck */
-  numQuestions: PropTypes.number.isRequired
+  /** Total number of cards in the deck */
+  numCards: PropTypes.number.isRequired
 }
 
 export default QuizComplete

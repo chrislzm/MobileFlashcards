@@ -16,10 +16,10 @@ import { removeHeaderIfAndroid } from '../utils/helpers'
 class IndividualDeck extends Component {
 
   static propTypes = {
-    /** Deck title */
-    title: PropTypes.string.isRequired,
-    /** Array of question objects for this deck */
-    questions: PropTypes.array.isRequired,
+    /** Deck name */
+    deckName: PropTypes.string.isRequired,
+    /** Array of card objects for this deck */
+    cards: PropTypes.array.isRequired,
     /** React Navigation screen navigation prop */
     navigation: PropTypes.object.isRequired
   }
@@ -28,31 +28,31 @@ class IndividualDeck extends Component {
     removeHeaderIfAndroid()
   )
 
-  startQuiz = (numCards,navigation,title) => {
+  startQuiz = (numCards,navigation,deckName) => {
     if(numCards === 0) {
       Alert.alert('Can\'t Start Quiz','Please add cards to this deck first')
     } else {
-      navigation.navigate('Quiz', {title})
+      navigation.navigate('Quiz', {deckName})
     }
   }
 
   render() {
-    const { title, questions, navigation } = this.props
-    const numCards = questions.length
+    const { deckName, cards, navigation } = this.props
+    const numCards = cards.length
     return (
       <View style={styles.container}>
         <Text style={styles.largeFont}>
-          {title}
+          {deckName}
         </Text>
         <Text style={[styles.mediumFont, {color:gray}]}>
           {numCards} Cards
         </Text>
         <FlashcardsButton
-          onPress={() => navigation.navigate('NewQuestion', {deckTitle: title})}>
+          onPress={() => navigation.navigate('NewQuestion', { deckName })}>
           Add Card
         </FlashcardsButton>
         <FlashcardsButton
-          onPress={() => this.startQuiz(numCards,navigation,title)}>
+          onPress={() => this.startQuiz(numCards,navigation,deckName)}>
           Start Quiz
         </FlashcardsButton>
       </View>
@@ -61,11 +61,11 @@ class IndividualDeck extends Component {
 }
 
 function mapStateToProps(state, props) {
-  const { title }  = props.navigation.state.params
+  const { deckName }  = props.navigation.state.params
   return ({
-    title,
+    deckName,
     // The deck may not exist yet since it's created asynchronously
-    questions: state[title] ? state[title].questions : []
+    cards: state[deckName] ? state[deckName].cards : []
   })
 }
 

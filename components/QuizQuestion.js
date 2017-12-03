@@ -28,7 +28,7 @@ export default class QuizQuestion extends Component {
   }
 
   render() {
-    const { title, questionText, answerText, questionNum, numQuestions, handleCorrect, handleIncorrect } = this.props
+    const { deckName, questionText, answerText, cardNum, numCards, handleCorrect, handleIncorrect } = this.props
     const { showAnswer } = this.state
 
     let textContent, toggleFlashcardsButtonText
@@ -45,7 +45,7 @@ export default class QuizQuestion extends Component {
       <View style={styles.container}>
         <View>
           <Text style={[styles.mediumFont,{color: gray}]}>
-            {questionNum}/{numQuestions}
+            {cardNum}/{numCards}
           </Text>
           <Text style={styles.mediumFont}>
             {textContent}
@@ -66,7 +66,7 @@ export default class QuizQuestion extends Component {
           Incorrect
         </FlashcardsButton>
         <Text style={styles.smallFont}>
-          Currently studying "{title}"
+          Currently studying "{deckName}"
         </Text>
       </View>
     )
@@ -75,15 +75,15 @@ export default class QuizQuestion extends Component {
 
 QuizQuestion.propTypes = {
   /** Title of the deck the user is being quizzed on */
-  title: PropTypes.string.isRequired,
-  /** Quiz question */
+  deckName: PropTypes.string.isRequired,
+  /** Card question */
   questionText: PropTypes.string.isRequired,
-  /** Quiz answer */
+  /** Card answer */
   answerText: PropTypes.string.isRequired,
   /** Question number */
-  questionNum: PropTypes.number.isRequired,
-  /** Total number of questions */
-  numQuestions: PropTypes.number.isRequired,
+  cardNum: PropTypes.number.isRequired,
+  /** Total number of cards */
+  numCards: PropTypes.number.isRequired,
   /** Callback that handles user submission of a "correct" answer. */
   handleCorrect: PropTypes.func.isRequired,
   /** Callback that handles user submission of an "incorrect" answer. */

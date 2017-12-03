@@ -12,20 +12,20 @@ const NOTIFICATION_STORAGE_KEY = 'Flashcards:notifications'
 
 /**
  * Adds a new card to an existing deck and saves to AsyncStorage
- * @param {String} title  Title of deck to add card to
+ * @param {String} deckName  Title of deck to add card to
  * @param {Object} card   Contains question:String answer:String properties
  * @return {Promise}
  */
-export const addCardToDeck = (title,card) => (
+export const addCardToDeck = (deckName,card) => (
   getDecks().then((data) => {
     const decks = JSON.parse(data)
-    let { questions } = decks[title]
-    if(!questions) {
-      questions = []
+    let { cards } = decks[deckName]
+    if(!cards) {
+      cards = []
     }
-    questions.push(card)
+    cards.push(card)
     return AsyncStorage.mergeItem(DECKS_STORAGE_KEY,JSON.stringify({
-      [title]: { questions }
+      [deckName]: { cards }
     }))
   })
 )
@@ -48,12 +48,12 @@ export const getDecks = () => (
 
 /**
  * Save new (empty) deck
- * @param  {[type]} title Deck title
+ * @param  {String} deckName Deck title
  * @return {Promise}
  */
-export const saveDeckTitle = (title) => (
+export const saveDeckName = (deckName) => (
   AsyncStorage.mergeItem(DECKS_STORAGE_KEY,JSON.stringify({
-    [title]: { title, questions: [] }
+    [deckName]: { deckName, cards: [] }
   }))
 )
 

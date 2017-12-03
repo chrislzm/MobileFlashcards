@@ -1,7 +1,7 @@
 import React,  { Component } from 'react'
 import { Text, TextInput, KeyboardAvoidingView, Alert } from 'react-native'
 import { connect } from 'react-redux'
-import { submitNewQuestion } from '../actions'
+import { submitNewCard } from '../actions'
 import PropTypes from 'prop-types'
 import FlashcardsButton from './FlashcardsButton'
 import { validateTextInput, removeHeaderIfAndroid } from '../utils/helpers'
@@ -26,8 +26,8 @@ class NewQuestion extends Component {
   )
 
   state = {
-    question: '',
-    answer: ''
+    questionText: '',
+    answerText: ''
   }
 
   handleTextChange = (field,input) => {
@@ -37,18 +37,18 @@ class NewQuestion extends Component {
   }
 
   handleSubmit = () => {
-    const { question, answer } = this.state
-    if(validateTextInput(question,'\"Question\"') && validateTextInput(answer,'\"Answer\"')) {
-      const { deckTitle } = this.props.navigation.state.params
-      const card = { question, answer }
-      this.props.dispatch(submitNewQuestion(deckTitle,card))
-      this.setState({ question: '', answer: ''})
+    const { questionText, answerText } = this.state
+    if(validateTextInput(questionText,'\"Question\"') && validateTextInput(answerText,'\"Answer\"')) {
+      const { deckName } = this.props.navigation.state.params
+      const card = { questionText, answerText }
+      this.props.dispatch(submitNewCard(deckName,card))
+      this.setState({ questionText: '', answerText: ''})
       Alert.alert('Success!','Your card has been added.')
     }
   }
 
   render() {
-    const { question, answer } = this.state
+    const { questionText, answerText } = this.state
 
     return (
       <KeyboardAvoidingView
@@ -62,14 +62,14 @@ class NewQuestion extends Component {
         </Text>
         <TextInput
           style={styles.textInput}
-          value={question}
-          onChangeText={(input) => this.handleTextChange('question',input)}
+          value={questionText}
+          onChangeText={(input) => this.handleTextChange('questionText',input)}
         />
         <Text style={[styles.mediumFont, {color:gray}]}>Answer</Text>
         <TextInput
           style={styles.textInput}
-          value={answer}
-          onChangeText={(input) => this.handleTextChange('answer',input)}
+          value={answerText}
+          onChangeText={(input) => this.handleTextChange('answerText',input)}
         />
         <FlashcardsButton
           onPress={this.handleSubmit}>

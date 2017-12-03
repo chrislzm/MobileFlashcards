@@ -29,8 +29,8 @@ class Decks extends Component {
   renderItem = ({ item }) => {
     return (
       <Deck
-        title={item.title}
-        numCards={item.questions.length}
+        deckName={item.deckName}
+        numCards={item.cards.length}
         navigation={this.props.navigation}
       />
     )

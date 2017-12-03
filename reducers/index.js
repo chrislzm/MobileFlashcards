@@ -12,28 +12,28 @@
 
 import {
   ADD_NEW_DECK,
-  ADD_NEW_QUESTION,
+  ADD_NEW_CARD,
   REMOVE_ALL_DECKS
 } from '../actions/types'
 
 const DEFAULT_DECKS_STATE = {}
 
 function decks (state = DEFAULT_DECKS_STATE, action) {
-  const { title, question, questions } = action
+  const { deckName, card, cards } = action
   switch(action.type) {
     case ADD_NEW_DECK:
     return {
       ...state,
-      [title]: { title, questions }
+      [deckName]: { deckName, cards }
     }
-    case ADD_NEW_QUESTION:
+    case ADD_NEW_CARD:
     return {
       ...state,
-      [title]: {
-        ...state[title],
-        questions: [
-          ...state[title].questions,
-          question
+      [deckName]: {
+        ...state[deckName],
+        cards: [
+          ...state[deckName].cards,
+          card
         ]
       }
     }

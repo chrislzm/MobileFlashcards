@@ -1,7 +1,7 @@
 import React,  { Component } from 'react'
 import { Text, TextInput, KeyboardAvoidingView } from 'react-native'
 import { connect } from 'react-redux'
-import { submitNewDeckTitle } from '../actions'
+import { submitNewDeckName } from '../actions'
 import PropTypes from 'prop-types'
 import FlashcardsButton from './FlashcardsButton'
 import { validateTextInput, validateIsUnique } from '../utils/helpers'
@@ -23,38 +23,38 @@ class NewDeck extends Component {
   }
 
   state = {
-    title: ''
+    deckName: ''
   }
 
-  handleTextChange = (title) => {
+  handleTextChange = (deckName) => {
     this.setState(() => ({
-      title
+      deckName
     }))
   }
 
   handleSubmit = () => {
-    const { title } = this.state
+    const { deckName } = this.state
     const { navigation, dispatch, decks } = this.props
-    if(validateTextInput(title,'New deck name') && validateIsUnique(title,decks)) {
-      dispatch(submitNewDeckTitle(title))
-      this.setState({ title: ''})
-      navigation.navigate('IndividualDeck',{title})
+    if(validateTextInput(deckName,'New deck name') && validateIsUnique(deckName,decks)) {
+      dispatch(submitNewDeckName(deckName))
+      this.setState({ deckName: ''})
+      navigation.navigate('IndividualDeck',{deckName})
     }
   }
 
   render() {
-    const { title } = this.state
+    const { deckName } = this.state
 
     return (
       <KeyboardAvoidingView
         style={styles.container}
         behavior='padding'>
         <Text style={styles.largeFont}>
-          What is the title of your new deck?
+          What is the name of your new deck?
         </Text>
         <TextInput
           style={styles.textInput}
-          value={title}
+          value={deckName}
           onChangeText={this.handleTextChange}
         />
         <FlashcardsButton
