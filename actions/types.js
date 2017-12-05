@@ -1,10 +1,6 @@
-/*
-  Mobile Flashcards: actions/types.js
-  By Chris Leung
-
-  Description:
-
-  All Redux action types used in the Mobile Flashcards app.
+/**
+ * @fileOverview All Redux action types used in the Mobile Flashcards app.
+ * @author Chris Leung
 */
 
 export const ADD_NEW_DECK = 'ADD_NEW_DECK'
