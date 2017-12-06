@@ -1,13 +1,7 @@
-/*
-  Mobile Flashcards: reducers/index.js
-  By Chris Leung
-
-  Description:
-
-  Contains the Redux root reducer used in the Mobile Flashcards app.
-
-  As this application grows in the future, deck and card data should be
-  refactored into separate reducers.
+/**
+ * @fileOverview The Redux root reducer used in the Mobile Flashcards app.
+ * @todo Refactor deck and card data into separate reducers.
+ * @author Chris Leung
 */
 
 import {
