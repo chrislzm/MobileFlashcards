@@ -1,10 +1,6 @@
-/*
-  Mobile Flashcards: actions/index.js
-  By Chris Leung
-
-  Description:
-
-  Combines all Redux actions and action types used in the Mobile Flashcards app.
+/**
+ * @fileOverview Combines all Mobile Flashcards Redux actions and action types.
+ * @author Chris Leung
 */
 
 export * from './deckActions'
