@@ -1,18 +1,13 @@
-/*
-  Mobile Flashcards: store/index.js
-  By Chris Leung
-
-  Description:
-
-  Creates the Redux store for the Mobile Flashcards app. Note that the Redux
-  store uses thunk to completely abstract-away persistent data access from the
-  app's React Native components.
+/**
+ * @fileoverview Creates the Redux store for the Mobile Flashcards app.
+ * @author Chris Leung
 */
 
 import { createStore, applyMiddleware } from 'redux'
 import reducer from '../reducers'
 import thunk from 'redux-thunk'
 
+// Uses thunk to separate persistent store operations from the rest of the app
 const store = createStore(reducer, applyMiddleware(thunk))
 
 export default store
