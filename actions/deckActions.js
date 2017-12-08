@@ -1,5 +1,5 @@
 /**
- * @fileOverview Deck-related Redux actions used in the Mobile Flashcards app
+ * @fileoverview Deck-related Redux actions used in the Mobile Flashcards app
  * @author Chris Leung
 */
 

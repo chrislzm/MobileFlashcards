@@ -1,5 +1,5 @@
 /**
- * @fileOverview Combines all Mobile Flashcards Redux actions and action types.
+ * @fileoverview Combines all Mobile Flashcards Redux actions and action types.
  * @author Chris Leung
 */
 

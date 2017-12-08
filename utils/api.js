@@ -1,5 +1,5 @@
 /**
- * @fileOverview AsyncStorage persistent store API for the Mobile Flashcards app
+ * @fileoverview AsyncStorage persistent store API for the Mobile Flashcards app
  * @author Chris Leung
 */
 

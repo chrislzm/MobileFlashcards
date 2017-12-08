@@ -1,5 +1,5 @@
 /**
- * @fileOverview Helper functions used throughout the Mobile Flashcards app
+ * @fileoverview Helper functions used throughout the Mobile Flashcards app
  * @author Chris Leung
 */
 

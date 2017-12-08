@@ -1,5 +1,5 @@
 /**
- * @fileOverview The Redux root reducer used in the Mobile Flashcards app.
+ * @fileoverview The Redux root reducer used in the Mobile Flashcards app.
  * @todo Refactor deck and card data into separate reducers.
  * @author Chris Leung
 */
