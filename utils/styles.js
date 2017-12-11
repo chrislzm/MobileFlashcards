@@ -1,13 +1,8 @@
-/*
-  Mobile Flashcards: utils/styles.js
-  By Chris Leung
-
-  Description:
-
-  Contains shared React Native component styles used throughout the Mobile
-  Flashcards app.
-
+/**
+ * @fileoverview Common Native component styles for the mobile flashcards app.
+ * @author Chris Leung
 */
+
 import { StyleSheet } from 'react-native'
 import { white, blue } from './colors'
 
