@@ -3,7 +3,7 @@
  * @author Tyler Mcginnis
  * @author Chris Leung
  *
- * Original source code from Udacity/Tyler Mcginnis. Visit:
+ * Original source code from Udacity/Tyler Mcginnis, with modifications. Visit:
  * {@link https://github.com/udacity/reactnd-UdaciFitness-complete/blob/setLocalNotification/utils/helpers.js}
 */
 
