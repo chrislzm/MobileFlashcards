@@ -18,6 +18,9 @@ Usage Notes
 -----------
 * Use the tabs on the main screen to view your decks, add new decks, and clear all decks
 * After creating a new deck, it will also appear in the "Decks" tab where tapping on it will allow you to add cards to it or start a quiz
+* Please note that a daily study reminder notification (at 8PM) is setup in two different situations:		
+ 1. The first time the app starts
+ 2. When a quiz is completed, any notifications for the current day will be cleared and a new one will be created for tomorrow
 
 Development Notes
 -----------------
