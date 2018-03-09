@@ -1,10 +1,9 @@
 Mobile Flashcards
 =================
-By Chris Leung
 
-Overview
---------
 Mobile Flashcards is a React Native application for Android and iOS that allows users to study collections of flashcards. This app allows users to create different categories of flashcards called "decks", add flashcards to those decks, then take quizzes on those decks.
+
+![Screenshot](/doc/screenshot.jpg "Screen Shots")
 
 Installation
 ------------
