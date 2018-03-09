@@ -1,33 +1,26 @@
-/*
-  Mobile Flashcards: components/IndividualDeck.js
-  By Chris Leung
-
-  Description:
-
-  React Native component that displays details of an individual deck along with
-  options to add new cards and start a quiz.
-
-  Props:
-    navigation: <Object> Required. React Navigation screen navigation prop.
-    title: <String> Required. The deck title.
-    questions: <Array> Required. The array of question objects for this deck.
-*/
-
 import React,  { Component } from 'react'
-import { View, Text, StyleSheet, Platform } from 'react-native'
+import { View, Text, Platform } from 'react-native'
 import { connect } from 'react-redux'
 import { Alert } from 'react-native'
 import PropTypes from 'prop-types'
 import FlashcardsButton from './FlashcardsButton'
 import { gray } from '../utils/colors'
-import { CONTAINER, MEDIUM_FONT, LARGE_FONT } from '../utils/styles'
+import { styles } from '../utils/styles'
 import { removeHeaderIfAndroid } from '../utils/helpers'
 
+/**
+ * Displays an individual deck's details along with controls to add new cards
+ * to and start a quiz on the deck.
+ * @author Chris Leung
+ */
 class IndividualDeck extends Component {
 
   static propTypes = {
-    title: PropTypes.string.isRequired,
-    questions: PropTypes.array.isRequired,
+    /** Deck name */
+    deckName: PropTypes.string.isRequired,
+    /** Array of card objects for this deck */
+    cards: PropTypes.array.isRequired,
+    /** React Navigation screen navigation prop */
     navigation: PropTypes.object.isRequired
   }
 
@@ -35,31 +28,31 @@ class IndividualDeck extends Component {
     removeHeaderIfAndroid()
   )
 
-  startQuiz = (numCards,navigation,title) => {
+  startQuiz = (numCards,navigation,deckName) => {
     if(numCards === 0) {
       Alert.alert('Can\'t Start Quiz','Please add cards to this deck first')
     } else {
-      navigation.navigate('Quiz', {title})
+      navigation.navigate('Quiz', {deckName})
     }
   }
 
   render() {
-    const { title, questions, navigation } = this.props
-    const numCards = questions.length
+    const { deckName, cards, navigation } = this.props
+    const numCards = cards.length
     return (
       <View style={styles.container}>
         <Text style={styles.largeFont}>
-          {title}
+          {deckName}
         </Text>
-        <Text style={styles.mediumFont}>
+        <Text style={[styles.mediumFont, {color:gray}]}>
           {numCards} Cards
         </Text>
         <FlashcardsButton
-          onPress={() => navigation.navigate('NewQuestion', {title})}>
+          onPress={() => navigation.navigate('NewCard', { deckName })}>
           Add Card
         </FlashcardsButton>
         <FlashcardsButton
-          onPress={() => this.startQuiz(numCards,navigation,title)}>
+          onPress={() => this.startQuiz(numCards,navigation,deckName)}>
           Start Quiz
         </FlashcardsButton>
       </View>
@@ -67,21 +60,12 @@ class IndividualDeck extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: CONTAINER,
-  largeFont: LARGE_FONT,
-  mediumFont: {
-    ...MEDIUM_FONT,
-    color: gray
-  }
-})
-
 function mapStateToProps(state, props) {
-  const { title }  = props.navigation.state.params
+  const { deckName }  = props.navigation.state.params
   return ({
-    title,
+    deckName,
     // The deck may not exist yet since it's created asynchronously
-    questions: state[title] ? state[title].questions : []
+    cards: state[deckName] ? state[deckName].cards : []
   })
 }
 

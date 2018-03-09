@@ -1,69 +1,60 @@
-/*
-  Mobile Flashcards: components/NewDeck.js
-  By Chris Leung
-
-  Description:
-
-  React Native component that allows user to create a new deck. Accomplishes
-  this by displaying a form, validating input and routing to the individual deck
-  view after the deck creation action has been dispatched to the Redux store.
-
-  Props:
-    navigation: <Object> Required. React Navigation screen navigation prop.
-    dispatch: <Function> Required. Dispatch function from the Redux store.
-    decks: <Object> Required. The decks object from the Redux store.
-*/
-
 import React,  { Component } from 'react'
-import { Text, TextInput, KeyboardAvoidingView, StyleSheet } from 'react-native'
+import { Text, TextInput, KeyboardAvoidingView } from 'react-native'
 import { connect } from 'react-redux'
-import { submitNewDeckTitle } from '../actions'
+import { submitNewDeckName } from '../actions'
 import PropTypes from 'prop-types'
 import FlashcardsButton from './FlashcardsButton'
 import { validateTextInput, validateIsUnique } from '../utils/helpers'
-import { CONTAINER, LARGE_FONT, TEXT_INPUT } from '../utils/styles'
+import { styles } from '../utils/styles'
 
+/**
+ * Allows user to create a new deck.
+ * @author Chris Leung
+ */
 class NewDeck extends Component {
 
   static propTypes = {
+    /** Dispatch function from the Redux store */
     dispatch: PropTypes.func.isRequired,
+    /** React Navigation screen navigation prop */
     navigation: PropTypes.object.isRequired,
+    /** Decks state object from the Redux store */
     decks: PropTypes.object.isRequired
   }
 
   state = {
-    title: ''
+    deckName: ''
   }
 
-  handleTextChange = (title) => {
+  handleTextChange = (deckName) => {
     this.setState(() => ({
-      title
+      deckName
     }))
   }
 
   handleSubmit = () => {
-    const { title } = this.state
+    const { deckName } = this.state
     const { navigation, dispatch, decks } = this.props
-    if(validateTextInput(title,'New deck name') && validateIsUnique(title,decks)) {
-      dispatch(submitNewDeckTitle(title))
-      this.setState({ title: ''})
-      navigation.navigate('IndividualDeck',{title})
+    if(validateTextInput(deckName,'New deck name') && validateIsUnique(deckName,decks)) {
+      dispatch(submitNewDeckName(deckName))
+      this.setState({ deckName: ''})
+      navigation.navigate('IndividualDeck',{deckName})
     }
   }
 
   render() {
-    const { title } = this.state
+    const { deckName } = this.state
 
     return (
       <KeyboardAvoidingView
         style={styles.container}
         behavior='padding'>
         <Text style={styles.largeFont}>
-          What is the title of your new deck?
+          What is the name of your new deck?
         </Text>
         <TextInput
           style={styles.textInput}
-          value={title}
+          value={deckName}
           onChangeText={this.handleTextChange}
         />
         <FlashcardsButton
@@ -74,12 +65,6 @@ class NewDeck extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: CONTAINER,
-  largeFont: LARGE_FONT,
-  textInput: TEXT_INPUT
-})
 
 const mapStateToProps = (store) => ({
   decks: store

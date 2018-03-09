@@ -1,30 +1,22 @@
-/*
-  Mobile Flashcards: components/RemoveDecks.js
-  By Chris Leung
-
-  Description:
-
-  React Native component that allows the user to delete all deck and flashcard
-  data from AsyncStorage and the Redux store.
-
-  Props:
-    dispatch: <Function> Required. Dispatch function from the Redux store.
-*/
-
 import React,  { Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-import { saveDeckTitle } from '../utils/api'
+import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import { removeAllDecks } from '../actions'
 import { Alert } from 'react-native'
 import { white, purple } from '../utils/colors'
-import { CONTAINER, MEDIUM_FONT } from '../utils/styles'
+import { styles } from '../utils/styles'
 import FlashcardsButton from './FlashcardsButton'
 import PropTypes from 'prop-types'
 
+/**
+ * Allows user to delete all deck and flashcard data (from both AsyncStorage and
+ * the Redux store).
+ * @author Chris Leung
+ */
 class RemoveDecks extends Component {
 
   static propTypes = {
+    /** Dispatch function from the Redux store */
     dispatch: PropTypes.func.isRequired,
   }
 
@@ -49,10 +41,5 @@ class RemoveDecks extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: CONTAINER,
-  mediumFont: MEDIUM_FONT
-})
 
 export default connect()(RemoveDecks)

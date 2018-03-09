@@ -1,16 +1,16 @@
-/*
-  Mobile Flashcards: utils/helpers.js
-  By Chris Leung
-
-  Description:
-
-  Contains helper functions used throughout the Mobile Flashcards app.
+/**
+ * @fileoverview Helper functions used throughout the Mobile Flashcards app
+ * @author Chris Leung
 */
 
 import { Alert, Platform } from 'react-native'
 
-// Used with the Redux store. Coverts the store's key/value props to an array of
-// objects, with the key being stored in a 'key' property in each object.
+/**
+ * Extracts values from an object's key:value pairs and puts them in an array.
+ * Assigns the key to a 'key' property on the value object.
+ * @param  {Object} object
+ * @return {Array}
+ */
 export function convertObjectToArrayWithKey(object) {
   return Object.keys(object).map((key) => {
     let arrayObj = object[key]
@@ -19,32 +19,42 @@ export function convertObjectToArrayWithKey(object) {
   })
 }
 
-// Used in a static navigationOptions method in a StackNavigator component. If
-// the platform is Android, removes the header since we don't need the back
-// button.
+/**
+ * Used in a static navigationOptions method in a StackNavigator component.
+ * Removes the header in Android since we don't need the back button.
+ * @return {Object} header: null
+ */
 export function removeHeaderIfAndroid() {
   if(Platform.OS === 'android')
   return {
     header: null
   }
 }
-
-// Returns true if a deck name is unique given a set of existing decks. If
-// not unique, displays a UI modal informing the user and returns false.
-export function validateIsUnique(name,decks) {
+/**
+ * Checks if deck name is unique. Displays a modal when false.
+ * @param  {String} deckName  Deck name
+ * @param  {Object} decks Object containing decks as title:data properties
+ * @return {Boolean}      True when unique, false otherwise
+ */
+export function validateIsUnique(deckName,decks) {
   const deckNames = Object.keys(decks)
-  if(deckNames.includes(name)) {
-    Alert.alert(`\"${name}\" already exists`, "Please choose a different name")
+  if(deckNames.includes(deckName)) {
+    Alert.alert(`\"${deckName}\" already exists`, "Please choose a different name")
     return false
   }
   return true
 }
 
-// Returns true if data is non-empty. If empty, displays a UI modal informing
-// the user and returns false.
-export function validateTextInput(data,name) {
+/**
+ * Checks if data is falsey (e.g. undefined or empty). When falsey, displays a
+ * modal informing the user.
+ * @param  {String} data Data to check
+ * @param  {String} inputFieldName
+ * @return {Boolean} True if data is non-empty, false otherwise.
+ */
+export function validateTextInput(data,inputFieldName) {
   if(!data) {
-    Alert.alert('Error',`${name} may not be empty`)
+    Alert.alert('Error',`${inputFieldName} may not be empty`)
     return false
   }
   return true

@@ -1,31 +1,23 @@
-/*
-  Mobile Flashcards: components/Decks.js
-  By Chris Leung
-
-  Description:
-
-  React Native component that displays a list of decks.
-
-  Props:
-    navigation: <Object> Required. React Navigation screen navigation prop.
-    decks: <Array> Required. An array of deck objects. Refer to README.md for
-      the structure of these objects.
-*/
-
 import React,  { Component } from 'react'
-import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, Text, FlatList, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { convertObjectToArrayWithKey } from '../utils/helpers'
 import { fetchDecks } from '../actions'
 import Deck from './Deck'
 import { white } from '../utils/colors'
-import { CONTAINER, MEDIUM_FONT } from '../utils/styles'
+import { styles } from '../utils/styles'
 
+/**
+ * Displays a list of decks.
+ * @author Chris Leung
+ */
 class Decks extends Component {
 
   static propTypes = {
+    /** React Navigation screen navigation prop  */
     navigation: PropTypes.object.isRequired,
+    /** Array of deck objects. See README.md for deck object structure. */
     decks: PropTypes.array.isRequired
   }
 
@@ -37,8 +29,8 @@ class Decks extends Component {
   renderItem = ({ item }) => {
     return (
       <Deck
-        title={item.title}
-        numCards={item.questions.length}
+        deckName={item.deckName}
+        numCards={item.cards.length}
         navigation={this.props.navigation}
       />
     )
@@ -63,11 +55,6 @@ class Decks extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: CONTAINER,
-  mediumFont: MEDIUM_FONT
-})
 
 const mapStateToProps = (store) => ({
   decks: convertObjectToArrayWithKey(store)
